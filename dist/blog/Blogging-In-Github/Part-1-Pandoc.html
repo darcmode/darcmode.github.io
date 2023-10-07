@@ -9,9 +9,6 @@
   <title>Blogging in Github - Part 1. Pandoc</title>
   <style>
     html {
-      line-height: 1.5;
-      font-family: Georgia, serif;
-      font-size: 20px;
       color: #1a1a1a;
       background-color: #fdfdfd;
     }
@@ -23,17 +20,23 @@
       padding-top: 50px;
       padding-bottom: 50px;
       hyphens: auto;
-      word-wrap: break-word;
+      overflow-wrap: break-word;
       text-rendering: optimizeLegibility;
       font-kerning: normal;
     }
     @media (max-width: 600px) {
       body {
         font-size: 0.9em;
-        padding: 1em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
       }
     }
     @media print {
+      html {
+        background-color: white;
+      }
       body {
         background-color: transparent;
         color: black;
@@ -57,6 +60,10 @@
       color: #1a1a1a;
     }
     img {
+      max-width: 100%;
+    }
+    svg {
+      height; auto;
       max-width: 100%;
     }
     h1, h2, h3, h4, h5, h6 {
@@ -83,9 +90,10 @@
       color: #606060;
     }
     code {
-      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
       font-size: 85%;
       margin: 0;
+      hyphens: manual;
     }
     pre {
       margin: 1em 0;
@@ -94,6 +102,7 @@
     pre code {
       padding: 0;
       overflow: visible;
+      overflow-wrap: normal;
     }
     .sourceCode {
      background-color: transparent;
@@ -135,15 +144,29 @@
     #TOC li {
       list-style: none;
     }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
     #TOC a:not(:hover) {
       text-decoration: none;
     }
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
     .display.math{display: block; text-align: center; margin: 0.5rem auto;}
   </style>
   <!--[if lt IE 9]>
@@ -158,26 +181,36 @@
 </header>
 <nav id="TOC" role="doc-toc">
 <ul class="incremental">
-<li><a href="#intro">Intro</a>
+<li><a href="#intro" id="toc-intro">Intro</a>
 <ul class="incremental">
-<li><a href="#pandoc-and-markdown">Pandoc and Markdown</a></li>
-<li><a href="#gnu-make">GNU Make</a></li>
+<li><a href="#pandoc-and-markdown" id="toc-pandoc-and-markdown">Pandoc
+and Markdown</a></li>
+<li><a href="#gnu-make" id="toc-gnu-make">GNU Make</a></li>
 </ul></li>
-<li><a href="#goals">Goals</a></li>
+<li><a href="#goals" id="toc-goals">Goals</a></li>
 </ul>
 </nav>
 <h1 id="intro">Intro</h1>
-<p>This page is generated from <code>.md</code> files using <a href="http://pandoc.org/">Pandoc</a>. The rest of this document describes the motivation, ideas and learnings around this process.</p>
+<p>This page is generated from <code>.md</code> files using <a
+href="http://pandoc.org/">Pandoc</a>. The rest of this document
+describes the motivation, ideas and learnings around this process.</p>
 <h2 id="pandoc-and-markdown">Pandoc and Markdown</h2>
-<p><a href="https://google.com?q=markdown">Markdown</a> is a text format that is helpful for authoring in general. <a href="http://pandoc.org/">Pandoc</a> is a tool that understands multiple document formats and allows people to convert documents between those formats.</p>
+<p><a href="https://google.com?q=markdown">Markdown</a> is a text format
+that is helpful for authoring in general. <a
+href="http://pandoc.org/">Pandoc</a> is a tool that understands multiple
+document formats and allows people to convert documents between those
+formats.</p>
 <h2 id="gnu-make">GNU Make</h2>
-<p><a href="https://www.gnu.org/software/make/">Make</a> is a tool for working with source files, generally used in C/C++ codebases but not limited to that domain. It has a rich set of features that reduce the amount of code required for complicated build graphs.</p>
+<p><a href="https://www.gnu.org/software/make/">Make</a> is a tool for
+working with source files, generally used in C/C++ codebases but not
+limited to that domain. It has a rich set of features that reduce the
+amount of code required for complicated build graphs.</p>
 <h1 id="goals">Goals</h1>
 <p>The following are the main goals selected for this project</p>
 <ol class="incremental" type="1">
 <li>Use the minimum amount of code that is reasonable for each task</li>
 <li>Don’t reinvent the wheel. Use standard tools instead</li>
-<li>Focus on expressivity and communication quality instead of feature richness</li>
+<li>Have fun!</li>
 </ol>
 </body>
 </html>

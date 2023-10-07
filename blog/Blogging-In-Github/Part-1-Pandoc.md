@@ -16,4 +16,4 @@ The following are the main goals selected for this project
 
 1. Use the minimum amount of code that is reasonable for each task
 2. Don't reinvent the wheel. Use standard tools instead
-3. Focus on expressivity and communication quality instead of feature richness
+3. Have fun!
