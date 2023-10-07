@@ -1,21 +1,17 @@
-# Hi there 🖖
+# Hi there
 
-This is suposed to be my Github profile but instead is a playground I
-have been using to create a minimalistic blogging system and write posts
-about it ♻️
+I'm a software person and this is my personal webpage.
 
-# In this repo
+# Index
 
-The following sites are managed by this repo
-
-## A blog
+## My blog
 
 The Blog index is
-[here](https://arcmode.github.io/dist/blog/index.html). Built with
+[here](https://arcmode.github.io/dist/blog/index.html). It's built with
 [Pandoc](https://pandoc.org/) and deployed as [Github
-Page](https://pages.github.com/).
+Page](https://pages.github.com/), just like this page.
 
-## My personal Github Profile
+## My Github Profile
 
 The `Readme.md` of this repo is deployed as [Github
 Profile](https://docs.github.com/en/github/setting-up-and-managing-your-github-profile/about-your-profile)
@@ -23,31 +19,34 @@ and the `html` version of this page is generated with
 [Pandoc](https://pandoc.org/) and deployed as [Github
 Page](https://pages.github.com/) [here](https://arcmode.github.io/).
 
-### TODO
+### <span class="todo TODO">TODO</span> 
 
-1.  <span class="todo TODO">TODO</span> use target-specific variables
+1.  <span class="done DONE">DONE</span> Add Org Mode and Markdown
+    support
+
+2.  <span class="todo TODO">TODO</span> use target-specific variables
     for pandoc formats
 
     <https://www.gnu.org/software/make/manual/make.html#Target_002dspecific>
 
-2.  <span class="todo TODO">TODO</span> move blog to arcmode/blog
+3.  <span class="todo TODO">TODO</span> move blog to arcmode/blog
 
-3.  <span class="todo TODO">TODO</span> specific templates (profile,
+4.  <span class="todo TODO">TODO</span> specific templates (profile,
     homepage, blog root)
 
-4.  <span class="todo TODO">TODO</span> boilerplate automation
+5.  <span class="todo TODO">TODO</span> boilerplate automation
     (webcomponents)
 
-5.  <span class="todo TODO">TODO</span> html themes (dracula)
+6.  <span class="todo TODO">TODO</span> html themes (dracula)
 
-6.  <span class="todo TODO">TODO</span> custom style for ascii art
+7.  <span class="todo TODO">TODO</span> custom style for ascii art
 
     <https://www.patorjk.com/software/taag/#p=testall&v=0&f=Graffiti&t=PanBloKe>
 
-7.  <span class="todo TODO">TODO</span> add configuration file following
+8.  <span class="todo TODO">TODO</span> add configuration file following
     XDG conventions
 
     <https://gist.github.com/roalcantara/107ba66dfa3b9d023ac9329e639bc58c>
 
-8.  <span class="todo TODO">TODO</span> split `index.html` of profile
+9.  <span class="todo TODO">TODO</span> split `index.html` of profile
     repo and profile

@@ -1,24 +1,23 @@
-#+TITLE: arcmode/code
-#+DATE: 2021-02-11 Thu
+#+TITLE: arcmode
+#+DATE: 2023-10-06 Thu
 #+AUTHOR: arcmode
 
-* Hi there 🖖
-This is suposed to be my Github profile but instead is a playground
-I have been using to create a minimalistic blogging system and write posts about it ♻️
+* Hi there
+I'm a software person and this is my personal webpage.
 
-* In this repo
-The following sites are managed by this repo
-** A blog
+* Index
+** My blog
 
-The Blog index is [[https://arcmode.github.io/dist/blog/index.html][here]]. Built with [[https://pandoc.org/][Pandoc]] and deployed as [[https://pages.github.com/][Github Page]].
+The Blog index is [[https://arcmode.github.io/dist/blog/index.html][here]]. It's built with [[https://pandoc.org/][Pandoc]] and deployed as [[https://pages.github.com/][Github Page]], just like this page.
 
-** My personal Github Profile
+** My Github Profile
 
 The =Readme.md= of this repo is deployed as [[https://docs.github.com/en/github/setting-up-and-managing-your-github-profile/about-your-profile][Github Profile]] and
 the =html= version of this page is generated with [[https://pandoc.org/][Pandoc]] and deployed
 as [[https://pages.github.com/][Github Page]] [[https://arcmode.github.io/][here]].
 
-*** TODO
+*** TODO 
+**** DONE Add Org Mode and Markdown support
 **** TODO use target-specific variables for pandoc formats
      https://www.gnu.org/software/make/manual/make.html#Target_002dspecific
 **** TODO move blog to arcmode/blog
