@@ -2,32 +2,29 @@
 
 I'm a software person and this is my personal webpage.
 
-# Index
+## Blog
 
-## My blog
-
-The Blog index is
+The blog index is
 [here](https://arcmode.github.io/dist/blog/index.html). It's built with
 [Pandoc](https://pandoc.org/) and deployed as [Github
 Page](https://pages.github.com/), just like this page.
 
 ## My Github Profile
 
-The `Readme.md` of this repo is deployed as [Github
+The `Readme.org` file of this repo is deployed as [Github
 Profile](https://docs.github.com/en/github/setting-up-and-managing-your-github-profile/about-your-profile)
 and the `html` version of this page is generated with
 [Pandoc](https://pandoc.org/) and deployed as [Github
 Page](https://pages.github.com/) [here](https://arcmode.github.io/).
+This page is actually that `html` file so you are reading my `Radme`
+file :smile:
 
 ### <span class="todo TODO">TODO</span> 
 
 1.  <span class="done DONE">DONE</span> Add Org Mode and Markdown
     support
 
-2.  <span class="todo TODO">TODO</span> use target-specific variables
-    for pandoc formats
-
-    <https://www.gnu.org/software/make/manual/make.html#Target_002dspecific>
+2.  <span class="todo TODO">TODO</span> html themes (dracula)
 
 3.  <span class="todo TODO">TODO</span> move blog to arcmode/blog
 
@@ -37,7 +34,10 @@ Page](https://pages.github.com/) [here](https://arcmode.github.io/).
 5.  <span class="todo TODO">TODO</span> boilerplate automation
     (webcomponents)
 
-6.  <span class="todo TODO">TODO</span> html themes (dracula)
+6.  <span class="todo TODO">TODO</span> use target-specific variables
+    for pandoc formats
+
+    <https://www.gnu.org/software/make/manual/make.html#Target_002dspecific>
 
 7.  <span class="todo TODO">TODO</span> custom style for ascii art
 
