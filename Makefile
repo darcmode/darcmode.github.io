@@ -87,14 +87,14 @@ rebase:
 		&& git pull --rebase origin master \
     --recurse-submodules
 
-deploy-profile:
+deploy-profile: profile
 	@git checkout master \
 		&& git diff --quiet \
 		&& git subtree split --prefix $(profile_prefix) -b gh-profile \
 		&& git push -f $(profile_remote) gh-profile:master \
 		&& git branch -D gh-profile
 
-deploy-blog:
+deploy-blog: $(blog) blog_index
 	@git checkout master \
 		&& git diff --quiet \
 		&& git push origin master --force

@@ -18,6 +18,8 @@ my =Radme= file :smile:
 
 *** TODO 
 **** DONE Add Org Mode and Markdown support
+**** TODO Make blog index include full hierarchy
+**** TODO Add blog index to home page (readme)
 **** TODO html themes (dracula)
 **** TODO move blog to arcmode/blog
 **** TODO specific templates (profile, homepage, blog root)
