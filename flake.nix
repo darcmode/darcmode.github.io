@@ -19,7 +19,12 @@
               python312
               pandoc
             ];
+
+            shellHook = ''
+              export GH_USER="$USER"
+            '';
           };
         }
       );
 }
+  
