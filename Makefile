@@ -87,27 +87,20 @@ rebase:
 		&& git pull --rebase origin master \
     --recurse-submodules
 
-deploy-profile-old:
-	@git checkout master \
-		&& git diff --quiet \
-		&& git subtree push \
-			--force \
-			--prefix $(profile_prefix) \
-			$(profile_remote) master
-
 deploy-profile:
 	@git checkout master \
 		&& git diff --quiet \
 		&& git subtree split --prefix $(profile_prefix) -b gh-profile \
-		&& git push -f origin $(profile_remote):master \
+		&& git push -f $(profile_remote) gh-profile:master \
 		&& git branch -D gh-profile
 
 deploy-blog:
 	@git checkout master \
 		&& git diff --quiet \
-		&& git push origin master
+		&& git push origin master --force
 
 deploy-all: commit rebase deploy-blog deploy-profile
+deploy-quick: deploy-blog deploy-profile
 
 ########### INIT #############
 
