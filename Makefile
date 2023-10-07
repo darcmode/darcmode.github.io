@@ -21,10 +21,12 @@ profile_prefix = 'dist/profile'
 profile_remote = 'gh-profile'
 profile_remote_url = 'https://github.com/$(GH_USER)/$(GH_USER).git'
 blog_posts_src := $(wildcard $(blog_src)/*/*.md) \
-									$(wildcard $(blog_src)/*/*.org)
+									$(wildcard $(blog_src)/*/*.org) \
+									$(wildcard $(blog_src)/*/*.tex)
 blog := $(patsubst $(blog_src)/%.org,$(blog_dist)/%.html, \
 					$(patsubst $(blog_src)/%.md,$(blog_dist)/%.html, \
-						$(blog_posts_src)))
+					$(patsubst $(blog_src)/%.tex,$(blog_dist)/%.html, \
+						$(blog_posts_src))))
 
 ########### BLOG #############
 
@@ -38,6 +40,13 @@ $(blog_dist)/%.html: $(blog_src)/%.md
 $(blog_dist)/%.html: $(blog_src)/%.org
 	@mkdir -p $(@D)
 	@pandoc -f org -i $< -t html -o $@ \
+		--template ./templates/root.html \
+		--toc \
+		--highlight-style themes/dracula.theme
+
+$(blog_dist)/%.html: $(blog_src)/%.tex
+	@mkdir -p $(@D)
+	@pandoc -f latex -i $< -t html -o $@ \
 		--template ./templates/root.html \
 		--toc \
 		--highlight-style themes/dracula.theme
