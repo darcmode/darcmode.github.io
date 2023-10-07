@@ -92,8 +92,8 @@ deploy-profile:
 		&& git diff --quiet \
 		&& git subtree push \
 			--prefix $(profile_prefix) \
-			$(profile_remote) master \
-      --force
+      --squash \
+			$(profile_remote) master
 
 deploy-blog:
 	@git checkout master \
