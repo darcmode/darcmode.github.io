@@ -85,13 +85,15 @@ rebase:
 	@git checkout master \
 		&& git fetch --all \
 		&& git pull --rebase origin master \
+    --recurse-submodules
 
 deploy-profile:
 	@git checkout master \
 		&& git diff --quiet \
 		&& git subtree push \
 			--prefix $(profile_prefix) \
-			$(profile_remote) master
+			$(profile_remote) master \
+      --squash
 
 deploy-blog:
 	@git checkout master \
