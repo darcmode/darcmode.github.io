@@ -1,9 +1,3 @@
-# P A N B L O K E
-#
-# Pandoc
-#       Blog
-#           MaKe
-
 all: $(blog) blog_index profile
 
 clean:

@@ -5,7 +5,8 @@
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <meta name="author" content="arcmode" />
-  <title>Blogging in Github - Part 2. Org Mode</title>
+  <meta name="dcterms.date" content="2021-08-02" />
+  <title>Blogging in Github - Part 1. Pandoc, Make and GitHub Pages</title>
   <style>
     html {
       color: #1a1a1a;
@@ -171,44 +172,66 @@
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
+  <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+  <style>
+    body {
+        font-family: 'Roboto';
+        /* font-size: 22px; */
+    }
+   nav {
+       border: 1px solid;
+       border-radius: 10px;
+       padding: 1REM;
+       background: #f1f1f1;
+   }
+  </style>
 </head>
 <body>
 <header id="title-block-header">
-<h1 class="title">Blogging in Github - Part 2. Org Mode</h1>
+<h1 class="title">Blogging in Github - Part 1. Pandoc, Make and GitHub
+Pages</h1>
 <p class="author">arcmode</p>
-<p class="date">2021-02-08 Mon</p>
+<p class="date">08/02/2021</p>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul class="incremental">
-<li><a href="#org-mode-is-great" id="toc-org-mode-is-great">Org mode is
-great</a>
+<li><a href="#hello-world" id="toc-hello-world">Hello world</a>
 <ul class="incremental">
-<li><a href="#emacs-support" id="toc-emacs-support">Emacs
-support</a></li>
-<li><a href="#pandoc-compatible" id="toc-pandoc-compatible">Pandoc
-compatible</a></li>
-<li><a
-href="#multi-purpose-documentation-literate-coding-blogging-writing-etc"
-id="toc-multi-purpose-documentation-literate-coding-blogging-writing-etc">Multi-purpose:
-documentation, literate coding, blogging, writing, etc…</a></li>
+<li><a href="#pandoc-and-markdown" id="toc-pandoc-and-markdown">Pandoc
+and Markdown</a></li>
+<li><a href="#gnu-make" id="toc-gnu-make">GNU Make</a></li>
 </ul></li>
+<li><a href="#goals" id="toc-goals">Goals</a></li>
+<li><a href="#next-steps" id="toc-next-steps">Next steps</a></li>
 </ul>
 </nav>
-<h1 id="org-mode-is-great">Org mode is great</h1>
-<p>I am trying to get more involved with this project. I want to start
-adding posts more often so I can exercise my writing skills and motivate
-myself to try new things and share more.</p>
-<p>The initial setup for this blog was based on Markdown. Thanks to
-Pandoc, today I am working on adding Org mode as an option for wriging
-posts too.</p>
-<p>Some of the things I like the most about Org mode</p>
-<h2 id="emacs-support">Emacs support</h2>
-<h2 id="pandoc-compatible">Pandoc compatible</h2>
-<h2
-id="multi-purpose-documentation-literate-coding-blogging-writing-etc">Multi-purpose:
-documentation, literate coding, blogging, writing, etc…</h2>
-<p>That's it. I don't know if I will use Org mode or Markdown more but
-having both available is cool and working with Org mode is always
-somethig I find to be fun.</p>
+<h1 id="hello-world">Hello world</h1>
+<p>This page is generated from <code>.md</code> files using <a
+href="http://pandoc.org/">Pandoc</a>. The rest of this document
+describes the motivation, ideas and learnings around this process.</p>
+<h2 id="pandoc-and-markdown">Pandoc and Markdown</h2>
+<p><a href="https://google.com?q=markdown">Markdown</a> is a text format
+that is helpful for authoring in general. <a
+href="http://pandoc.org/">Pandoc</a> is a tool that understands multiple
+document formats and allows people to convert documents between those
+formats.</p>
+<h2 id="gnu-make">GNU Make</h2>
+<p><a href="https://www.gnu.org/software/make/">Make</a> is a tool for
+working with source files, generally used in C/C++ codebases but not
+limited to that domain. It has a rich set of features that reduce the
+amount of code required for complicated build graphs.</p>
+<h1 id="goals">Goals</h1>
+<p>The following are the main goals selected for this blogging
+system</p>
+<ol class="incremental" type="1">
+<li>Use the minimum amount of code that is reasonable for each task</li>
+<li>Don’t reinvent the wheel. Use standard tools instead</li>
+<li>Have fun!</li>
+</ol>
+<h1 id="next-steps">Next steps</h1>
+<p>The next posts in this series will cover how the blogging system
+works including links to the code and snippets in case you are
+interested in borrowing some ideas. Feel free to copy/paste or fork the
+<a href="https://github.com/arcmode/arcmode.github.io">repo</a>.</p>
 </body>
 </html>
