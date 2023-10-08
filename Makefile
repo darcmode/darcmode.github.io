@@ -20,9 +20,10 @@ profile_dist = ./dist/profile
 profile_prefix = 'dist/profile'
 profile_remote = 'gh-profile'
 profile_remote_url = 'https://github.com/$(GH_USER)/$(GH_USER).git'
-blog_posts_src := $(wildcard $(blog_src)/*/*.md) \
+blog_posts_wip_src := $(wildcard $(blog_src)/*/WIP_*)
+blog_posts_src := $(filter-out $(blog_posts_wip_src), $(wildcard $(blog_src)/*/*.md) \
 									$(wildcard $(blog_src)/*/*.org) \
-									$(wildcard $(blog_src)/*/*.tex)
+									$(wildcard $(blog_src)/*/*.tex))
 blog := $(patsubst $(blog_src)/%.org,$(blog_dist)/%.html, \
 					$(patsubst $(blog_src)/%.md,$(blog_dist)/%.html, \
 					$(patsubst $(blog_src)/%.tex,$(blog_dist)/%.html, \
@@ -126,4 +127,4 @@ init: clean init-profile-remote init-profile
 
 ########### END #############
 
-.PHONY: all deploy deploy-blog deploy-profile init-profile-remote init-profile clean init commit rebase
+.PHONY: all deploy-all deploy-blog deploy-profile init-profile-remote init-profile clean init commit rebase

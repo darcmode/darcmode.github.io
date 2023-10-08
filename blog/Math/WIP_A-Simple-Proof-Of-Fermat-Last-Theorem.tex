@@ -1,0 +1,71 @@
+\documentclass{article}
+\usepackage{amsmath} % For mathematical symbols and equations
+
+\begin{document}
+
+\title{Proof: Fermat's Last Theorem}
+\author{arcmode}
+\date{2023-10-07}
+
+\maketitle
+
+\section{Introduction}
+Fermat's Last Theorem is a mathematical problem posed by Pierre de Fermat in the 17th century which remained unsolved for centuries. In 1994, Andrew Wiles presented a groundbreaking proof that forever altered the landscape of mathematics.
+
+Recently, I came across an article shared on HackerNews which tells how the famous theorem from Pythagoras was known by babylonians at least 1000 years before the greek genious was alive. The article contained links to Fermat's theorem and I was fascinated by the feeling of ancient and modern humans looking at the same problems. This prompted me to think about the Fermat theorem and made me want to understand the proof so I could feel somehow more connected to those ancient folks. I started reading it and gave up after a few minuts given my precarious background in mathematics so I decided to give it a try and see if I could come up with a more simple proof.
+
+In this post I present an extremely simple proof for this theorem by first generalizing the subject and then proving the theorem on the more general case.
+
+I don't think this proof is important because it is too simple to not be flawed or already known. That said, it is important for me because I came up with it by myself and it taught me an important lesson, which I explain at the end. Now, let's get into the theorem, generalization and proof.
+
+\section{Fermat's Last Theorem}
+For any positive integers $a$, $b$, $c$, and $n > 2$, the equation
+\begin{equation}
+a^n + b^n = c^n
+\end{equation}
+has no integer solutions.
+
+\section{Pythagorean Theorem}
+In a right triangle, the square of the length of the hypotenuse (\(c\)) is equal to the sum of the squares of the lengths of the other two sides (\(a\) and \(b\)). This can be expressed as:
+\begin{equation}
+c^2 = a^2 + b^2
+\end{equation}
+
+\section{The Link Between Fermat And Pythagoras}
+The Pythagorean theorem presents a very specific example of one =slice= of Fermat's theorem (if $n = 2$ then a solution exists). For example $a = 3$, $b = 4$ and $c = 5$ is a widely know solution to the Pythagorean Theorem.
+
+Now, let's introduce the following theorem, which is a simple generalization of the Pythagoran Theorem and Fermat's Last Theorem put together.
+
+\section*{Generalized Fermat's Last Theorem}
+For any positive integers $n > 2$ and positive integers $x_1, x_2, \ldots, x_n$, the equation
+\begin{equation}
+x_1^n + x_2^n + \ldots + x_n^n = c^n
+\end{equation}
+has no integer solutions.
+
+\section{Proof}
+Since $a$ and $b$ are even integers, by definition, they can be expressed as:
+\begin{align*}
+a &= 2m, \quad \text{where } m \in \mathbb{Z} \quad \text{(since $a$ is even)} \\
+b &= 2n, \quad \text{where } n \in \mathbb{Z} \quad \text{(since $b$ is even)}
+\end{align*}
+
+Now, let's consider their sum, $a + b$:
+\begin{align*}
+a + b &= (2m) + (2n) \\
+&= 2(m + n)
+\end{align*}
+
+Since $m + n$ is an integer (sum of two integers is also an integer), we can rewrite $a + b$ as:
+\begin{align*}
+a + b &= 2(m + n)
+\end{align*}
+
+This shows that $a + b$ is a multiple of 2, which is the definition of an even integer.
+
+Therefore, we have proven that the sum of two even integers $a$ and $b$ is an even integer.
+
+\section{Conclusion}
+We have successfully proved that the sum of two even integers is even.
+
+\end{document}
