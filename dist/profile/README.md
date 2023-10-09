@@ -1,7 +1,6 @@
 # Hi there
 
-I'm a software person and this is my personal webpage. My name is David
-and my username in GitHub is `arcmode`.
+My name is David, I'm a software person and this is my personal webpage.
 
 ## Blog
 

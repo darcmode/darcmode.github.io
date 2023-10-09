@@ -172,15 +172,30 @@
   <![endif]-->
   <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
   <style>
-    body {
-        font-family: 'Roboto';
-        /* font-size: 22px; */
-    }
-   nav {
-       border: 1px solid;
+   html {
+       background: radial-gradient(peru, wheat);
+   }
+   body {
+       font-family: 'Roboto';
+   }
+   nav, footer {
        border-radius: 10px;
        padding: 1REM;
-       background: #f1f1f1;
+       background: wheat;
+   }
+   footer {
+       display: flex;
+       align-items: center;
+       justify-content: space-evenly;
+   }
+   div.sourceCode {
+       padding: 1REM;
+       border-radius: 1REM;
+       background: wheat;
+   }
+
+   pre > code.sourceCode {
+       white-space: pre-wrap;
    }
   </style>
 </head>
@@ -190,5 +205,13 @@
 </header>
 <h3 id="blogging-in-github"><a
 href="Blogging-In-Github/index.html">Blogging In Github</a></h3>
+<footer>
+    <p>
+        &copy; 2023 All rights reserved
+    </p>
+    <a href="https://arcmode.github.com/">Home</a>
+    <a href="https://arcmode.github.io/dist/blog/">Blog</a>
+    <a href="mailto:drojascamaggi@gmail.com">Contact</a>
+</footer>
 </body>
 </html>

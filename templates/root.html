@@ -34,15 +34,30 @@ $for(header-includes)$
 $endfor$
   <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
   <style>
-    body {
-        font-family: 'Roboto';
-        /* font-size: 22px; */
-    }
-   nav {
-       border: 1px solid;
+   html {
+       background: radial-gradient(peru, wheat);
+   }
+   body {
+       font-family: 'Roboto';
+   }
+   nav, footer {
        border-radius: 10px;
        padding: 1REM;
-       background: #f1f1f1;
+       background: wheat;
+   }
+   footer {
+       display: flex;
+       align-items: center;
+       justify-content: space-evenly;
+   }
+   div.sourceCode {
+       padding: 1REM;
+       border-radius: 1REM;
+       background: wheat;
+   }
+
+   pre > code.sourceCode {
+       white-space: pre-wrap;
    }
   </style>
 </head>

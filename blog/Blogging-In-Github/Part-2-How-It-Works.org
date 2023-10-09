@@ -64,5 +64,3 @@ is pushed to the respective git remote. The blog uses =origin= and the profile p
 
 That's it for now. Here's the Makefile if you want to take a look. You can also find it in the [[https://github.com/arcmode/arcmode.github.io][repo]]
 #+INCLUDE: "../../Makefile" src makefile
-
-Thanks for reading, if you have any question just hit me up by email at =drojascamaggi@gmail.com=

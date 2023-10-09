@@ -1,0 +1,79 @@
+<script type="module">
+ const FORTUNE_URL = "https://unpkg.com/fortune-cookie/fortune-cookie.json";
+ const fetchFortune = async () => {
+     return (await fetch(FORTUNE_URL)).json();
+ };
+
+ const randomItem = (items) => items[Math.floor(Math.random() * items.length)];
+
+ const fortune = await fetchFortune();
+
+ class FortuneCookie extends HTMLElement {
+     constructor() {
+         super();
+
+         // Create a container for the emoji and message
+         const container = document.createElement('div');
+         container.classList.add('fortune-cookie');
+
+         // Create the emoji element
+         const emoji = document.createElement('span');
+         emoji.textContent = '🥠';
+
+         // Create the message container
+         const messageContainer = document.createElement('div');
+         messageContainer.classList.add('message-container');
+
+         // Define the message to be displayed
+         const messageParagraph = document.createElement('p');
+         const message = document.createElement('em');
+         message.textContent = randomItem(fortune);
+
+         // Append the emoji and message to the container
+         container.appendChild(emoji);
+         messageParagraph.appendChild(message);
+         messageContainer.appendChild(messageParagraph);
+         container.appendChild(messageContainer);
+
+         // Attach a click event listener to toggle the message visibility
+         const listener = container.addEventListener('click', () => {
+             messageContainer.style.visibility = 'visible';
+             messageContainer.style.opacity = '1';
+             container.removeEventListener('click', listener);
+             container.classList.add('open');
+         });
+
+         // Append the container to the component
+         this.appendChild(container);
+     }
+ }
+
+ // Define the custom element
+ customElements.define('fortune-cookie', FortuneCookie);
+</script>
+
+<style>
+ /* Style for the fortune cookie emoji */
+ .fortune-cookie {
+     margin: 3rem 0;
+     cursor: pointer;
+     font-size: 2rem;
+     text-align: center;
+     text-shadow: 0 0 1px black, 0 0 1rem white, 0 0 2rem gold;
+     transition: text-shadow 0.5s linear;
+ }
+ .fortune-cookie.open {
+     text-shadow: 0 0 1px black;
+     cursor: inherit;
+ }
+
+ /* Style for the message container */
+ .message-container {
+     visibility: hidden;
+     opacity: 0;
+     transition: visibility 0s, opacity 0.5s linear, text-shadow 0.5s linear;
+     margin-top: 1rem;
+     font-size: 1rem;
+     text-shadow: 0 0 1px white, 0 0 1rem gold, 0 0 1.5rem red;
+ }
+</style>

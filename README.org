@@ -1,10 +1,8 @@
 #+TITLE: arcmode
 #+DATE: 2023-10-07 Thu
-#+AUTHOR: arcmode
 
 * Hi there
-I'm a software person and this is my personal webpage. My name is David and
-my username in GitHub is =arcmode=.
+My name is David, I'm a software person and this is my personal webpage.
 
 ** Blog
 The blog index is [[https://arcmode.github.io/dist/blog/index.html][here]]. It's built with [[https://pandoc.org/][Pandoc]] and deployed as a [[https://pages.github.com/][Github Page]].

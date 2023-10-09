@@ -18,6 +18,11 @@
               gnumake
               python312
               pandoc
+
+              # typescript
+              pkgs.nodePackages.typescript
+              pkgs.nodePackages.typescript-language-server
+              pkgs.nodePackages.prettier
             ];
 
             shellHook = ''

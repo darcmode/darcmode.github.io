@@ -30,21 +30,27 @@ $(blog_dist)/%.html: $(blog_src)/%.md
 	@pandoc -i $< -t html -o $@ \
 		--template ./templates/root.html \
 		--toc \
-		--highlight-style themes/dracula.theme
+		--include-after-body=./templates/fortune-cookie-component.html \
+		--include-after-body=./templates/thank-you-note.html \
+		--include-after-body=./templates/footer.html
 
 $(blog_dist)/%.html: $(blog_src)/%.org
 	@mkdir -p $(@D)
 	@pandoc -f org -i $< -t html -o $@ \
 		--template ./templates/root.html \
 		--toc \
-		--highlight-style themes/dracula.theme
+		--include-after-body=./templates/fortune-cookie-component.html \
+		--include-after-body=./templates/thank-you-note.html \
+		--include-after-body=./templates/footer.html
 
 $(blog_dist)/%.html: $(blog_src)/%.tex
 	@mkdir -p $(@D)
 	@pandoc -f latex -i $< -t html -o $@ \
 		--template ./templates/root.html \
 		--toc \
-		--highlight-style themes/dracula.theme
+		--include-after-body=./templates/fortune-cookie-component.html \
+		--include-after-body=./templates/thank-you-note.html \
+		--include-after-body=./templates/footer.html
 
 remove_index:
 	@rm $(blog_dist)/index.html 2>/dev/null || true
@@ -57,24 +63,32 @@ blog_index: $(blog) remove_index
 			| pandoc -t html -o $(series)/index.html \
 				--metadata title:"$(shell echo '$(series)' | ./scripts/directory2title.sh)" \
 				--template ./templates/root.html \
-				--highlight-style themes/dracula.theme;)
+				--include-after-body=./templates/footer.html;)
 	@ls $(blog_dist) \
 	  	| grep -v index.html \
 	  	| ./scripts/directory2index.sh \
 	  	| pandoc -t html -o $(blog_dist)/index.html \
 				--metadata title:"$(GH_USER)/blog" \
 	  		--template ./templates/root.html \
-	  		--highlight-style themes/dracula.theme
+				--include-after-body=./templates/footer.html
 
 ########### PROFILE #############
 
 profile: $(wildcard ./README.org) $(wildcard ./README.md)
 	@[[ -f ./README.org ]] && bash -c 'cat ./README.org \
 		| tee >(pandoc -f org -t gfm -o $(profile_dist)/README.md) \
-		| pandoc -f org -t html -o ./index.html --template ./templates/root.html' || true
+		| pandoc -f org -t html -o ./index.html --template ./templates/root.html' \
+			--include-after-body=./templates/fortune-cookie-component.html \
+			--include-after-body=./templates/thank-you-note.html \
+			--include-after-body=./templates/footer.html \
+			|| true
 	@[[ -f ./README.md ]] && bash -c 'cat ./README.md \
 		| tee >(pandoc -t gfm -o $(profile_dist)/README.md) \
-		| pandoc -t html -o ./index.html --template ./templates/root.html' || true
+		| pandoc -t html -o ./index.html --template ./templates/root.html' \
+			--include-after-body=./templates/fortune-cookie-component.html \
+			--include-after-body=./templates/thank-you-note.html \
+			--include-after-body=./templates/footer.html \
+			|| true
 
 ########### DEPLOY #############
 
