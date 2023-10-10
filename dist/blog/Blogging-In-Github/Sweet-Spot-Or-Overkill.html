@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="generator" content="pandoc" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+                <meta name="author" content="arcmode" />
+                        <meta name="dcterms.date" content="2023-10-09" />
+                                <title>Blogging in GitHub: Sweet spot or overkill?</title>
+        <style>
+         html {
+           color: #1a1a1a;
+           background-color: #fdfdfd;
+         }
+         body {
+           margin: 0 auto;
+           max-width: 36em;
+           padding-left: 50px;
+           padding-right: 50px;
+           padding-top: 50px;
+           padding-bottom: 50px;
+           hyphens: auto;
+           overflow-wrap: break-word;
+           text-rendering: optimizeLegibility;
+           font-kerning: normal;
+         }
+         @media (max-width: 600px) {
+           body {
+             font-size: 0.9em;
+             padding: 12px;
+           }
+           h1 {
+             font-size: 1.8em;
+           }
+         }
+         @media print {
+           html {
+             background-color: white;
+           }
+           body {
+             background-color: transparent;
+             color: black;
+             font-size: 12pt;
+           }
+           p, h2, h3 {
+             orphans: 3;
+             widows: 3;
+           }
+           h2, h3, h4 {
+             page-break-after: avoid;
+           }
+         }
+         p {
+           margin: 1em 0;
+         }
+         a {
+           color: #1a1a1a;
+         }
+         a:visited {
+           color: #1a1a1a;
+         }
+         img {
+           max-width: 100%;
+         }
+         svg {
+           height; auto;
+           max-width: 100%;
+         }
+         h1, h2, h3, h4, h5, h6 {
+           margin-top: 1.4em;
+         }
+         h5, h6 {
+           font-size: 1em;
+           font-style: italic;
+         }
+         h6 {
+           font-weight: normal;
+         }
+         ol, ul {
+           padding-left: 1.7em;
+           margin-top: 1em;
+         }
+         li > ol, li > ul {
+           margin-top: 0;
+         }
+         blockquote {
+           margin: 1em 0 1em 1.7em;
+           padding-left: 1em;
+           border-left: 2px solid #e6e6e6;
+           color: #606060;
+         }
+         code {
+           font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+           font-size: 85%;
+           margin: 0;
+           hyphens: manual;
+         }
+         pre {
+           margin: 1em 0;
+           overflow: auto;
+         }
+         pre code {
+           padding: 0;
+           overflow: visible;
+           overflow-wrap: normal;
+         }
+         .sourceCode {
+          background-color: transparent;
+          overflow: visible;
+         }
+         hr {
+           background-color: #1a1a1a;
+           border: none;
+           height: 1px;
+           margin: 1em 0;
+         }
+         table {
+           margin: 1em 0;
+           border-collapse: collapse;
+           width: 100%;
+           overflow-x: auto;
+           display: block;
+           font-variant-numeric: lining-nums tabular-nums;
+         }
+         table caption {
+           margin-bottom: 0.75em;
+         }
+         tbody {
+           margin-top: 0.5em;
+           border-top: 1px solid #1a1a1a;
+           border-bottom: 1px solid #1a1a1a;
+         }
+         th {
+           border-top: 1px solid #1a1a1a;
+           padding: 0.25em 0.5em 0.25em 0.5em;
+         }
+         td {
+           padding: 0.125em 0.5em 0.25em 0.5em;
+         }
+         header {
+           margin-bottom: 4em;
+           text-align: center;
+         }
+         #TOC li {
+           list-style: none;
+         }
+         #TOC ul {
+           padding-left: 1.3em;
+         }
+         #TOC > ul {
+           padding-left: 0;
+         }
+         #TOC a:not(:hover) {
+           text-decoration: none;
+         }
+         code{white-space: pre-wrap;}
+         span.smallcaps{font-variant: small-caps;}
+         div.columns{display: flex; gap: min(4vw, 1.5em);}
+         div.column{flex: auto; overflow-x: auto;}
+         div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+         /* The extra [class] is a hack that increases specificity enough to
+            override a similar rule in reveal.js */
+         ul.task-list[class]{list-style: none;}
+         ul.task-list li input[type="checkbox"] {
+           font-size: inherit;
+           width: 0.8em;
+           margin: 0 0.8em 0.2em -1.6em;
+           vertical-align: middle;
+         }
+         .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+         /* CSS for syntax highlighting */
+         pre > code.sourceCode { white-space: pre; position: relative; }
+         pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+         pre > code.sourceCode > span:empty { height: 1.2em; }
+         .sourceCode { overflow: visible; }
+         code.sourceCode > span { color: inherit; text-decoration: inherit; }
+         div.sourceCode { margin: 1em 0; }
+         pre.sourceCode { margin: 0; }
+         @media screen {
+         div.sourceCode { overflow: auto; }
+         }
+         @media print {
+         pre > code.sourceCode { white-space: pre-wrap; }
+         pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+         }
+         pre.numberSource code
+           { counter-reset: source-line 0; }
+         pre.numberSource code > span
+           { position: relative; left: -4em; counter-increment: source-line; }
+         pre.numberSource code > span > a:first-child::before
+           { content: counter(source-line);
+             position: relative; left: -1em; text-align: right; vertical-align: baseline;
+             border: none; display: inline-block;
+             -webkit-touch-callout: none; -webkit-user-select: none;
+             -khtml-user-select: none; -moz-user-select: none;
+             -ms-user-select: none; user-select: none;
+             padding: 0 4px; width: 4em;
+             color: #aaaaaa;
+           }
+         pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+         div.sourceCode
+           {   }
+         @media screen {
+         pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+         }
+         code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+         code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+         code span.at { color: #7d9029; } /* Attribute */
+         code span.bn { color: #40a070; } /* BaseN */
+         code span.bu { color: #008000; } /* BuiltIn */
+         code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+         code span.ch { color: #4070a0; } /* Char */
+         code span.cn { color: #880000; } /* Constant */
+         code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+         code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+         code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+         code span.dt { color: #902000; } /* DataType */
+         code span.dv { color: #40a070; } /* DecVal */
+         code span.er { color: #ff0000; font-weight: bold; } /* Error */
+         code span.ex { } /* Extension */
+         code span.fl { color: #40a070; } /* Float */
+         code span.fu { color: #06287e; } /* Function */
+         code span.im { color: #008000; font-weight: bold; } /* Import */
+         code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+         code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+         code span.op { color: #666666; } /* Operator */
+         code span.ot { color: #007020; } /* Other */
+         code span.pp { color: #bc7a00; } /* Preprocessor */
+         code span.sc { color: #4070a0; } /* SpecialChar */
+         code span.ss { color: #bb6688; } /* SpecialString */
+         code span.st { color: #4070a0; } /* String */
+         code span.va { color: #19177c; } /* Variable */
+         code span.vs { color: #4070a0; } /* VerbatimString */
+         code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+        </style>
+                        <!--[if lt IE 9]>
+            <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+        <![endif]-->
+                <script type="module">
+                 const FORTUNE_URL = "https://unpkg.com/fortune-cookie/fortune-cookie.json";
+                 const fetchFortune = async () => {
+                     return (await fetch(FORTUNE_URL)).json();
+                 };
+
+                 const randomItem = (items) => items[Math.floor(Math.random() * items.length)];
+
+                 const fortune = await fetchFortune();
+
+                 class FortuneCookie extends HTMLElement {
+                     constructor() {
+                         super();
+
+                         // Create a container for the emoji and message
+                         const container = document.createElement('div');
+                         container.classList.add('fortune-cookie');
+
+                         // Create the emoji element
+                         const emoji = document.createElement('span');
+                         emoji.classList.add('fortune-cookie-emoji');
+                         emoji.textContent = '🥠';
+
+                         // Create the message container
+                         const messageContainer = document.createElement('div');
+                         messageContainer.classList.add('message-container');
+
+                         // Define the message to be displayed
+                         const messageParagraph = document.createElement('p');
+                         const message = document.createElement('em');
+                         message.textContent = randomItem(fortune);
+
+                         // Append the emoji and message to the container
+                         container.appendChild(emoji);
+                         messageParagraph.appendChild(message);
+                         messageContainer.appendChild(messageParagraph);
+                         container.appendChild(messageContainer);
+
+                         // Attach a click event listener to toggle the message visibility
+                         const listener = emoji.addEventListener('click', () => {
+                             messageContainer.style.visibility = 'visible';
+                             messageContainer.style.opacity = '1';
+                             emoji.removeEventListener('click', listener);
+                             container.classList.add('open');
+                         });
+
+                         // Append the container to the component
+                         this.appendChild(container);
+                     }
+                 }
+
+                 // Define the custom element
+                 customElements.define('fortune-cookie', FortuneCookie);
+                </script>
+
+                <style>
+                 /* Style for the fortune cookie emoji */
+                 .fortune-cookie {
+                     margin: 3rem 0;
+                     font-size: 2rem;
+                     text-align: center;
+                 }
+                 .fortune-cookie-emoji {
+                     cursor: pointer;
+                     transition: text-shadow 0.5s ease-in-out;
+                     text-shadow: 0 0 1px black, 0 0 1rem white, 0 0 2rem white;
+                 }
+                 .fortune-cookie:hover > .fortune-cookie-emoji {
+                     text-shadow: 0 0 1px black, 0 0 1rem white, 0 0 2rem white, 0 0 3rem white;
+                 }
+                 .fortune-cookie.open > .fortune-cookie-emoji {
+                     text-shadow: 0 0 1px black;
+                     cursor: inherit;
+                 }
+
+                 /* Style for the message container */
+                 .fortune-cookie > .message-container {
+                     visibility: hidden;
+                     opacity: 0;
+                     transition: visibility 0s, opacity 0.5s linear, text-shadow 0.5s ease-in-out;
+                     /* margin-top: 2rem; */
+                     font-size: 1rem;
+                     transform: skewX(10deg);`
+                 }
+                 .fortune-cookie > .message-container > p > em {
+                     background-color: seashell;
+                     padding: 10px;
+                 }
+                </style>
+                <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+        <style>
+         :root {
+             /* Color palette */
+             --brown-color: brown;
+             --brown2-color: saddlebrown;
+             --brown3-color: sienna;
+             --tan-color: tan;
+             --tan2-color: burlywood;
+             --tan3-color: wheat;
+             --red-color: firebrick;
+             --red2-color: darkred;
+             --red3-color: crimson;
+             --red4-color: indianred;
+             --green-color: teal;
+
+             /* Color theme */
+             --bg-color: var(--tan2-color);
+             --box-color: var(--tan3-color);
+             --link-color: var(--brown-color);
+
+             /* Global background */
+             background-color: var(--bg-color);
+         }
+         html, body {
+             margin: 0 auto;
+             padding: 0;
+             height: 100%;
+         }
+         body {
+             font-family: 'Roboto';
+             display: flex;
+             flex-direction: column;
+         }
+         nav, footer {
+             border-radius: 10px;
+             padding: 1rem;
+             background: var(--box-color);
+         }
+         .content {
+             flex: 1;
+         }
+         footer {
+             flex-shrink: 0;
+             display: flex;
+             align-items: center;
+             justify-content: space-evenly;
+             margin-bottom: 2rem;
+         }
+         div.sourceCode {
+             padding: 1rem;
+             border-radius: 1rem;
+             background: var(--box-color);
+         }
+
+         pre > code.sourceCode {
+             white-space: pre-wrap;
+         }
+
+         /* Section styles. Required when using --section-divs in Pandoc cli */
+         section > h1 {
+             font-size: 2em;
+             margin-block-start: 0.67em;
+             margin-block-end: 0.67em;
+         }
+         section > h2 {
+             font-size: 1.5em;
+             margin-block-start: 0.83em;
+             margin-block-end: 0.83em;
+         }
+         section > h1,
+         section > h2,
+         section > h3,
+         section > h4,
+         section > h5,
+         section > h6 {
+             margin-top: 1.4em;
+         }
+         section > h1 > a,
+         section > h2 > a,
+         section > h3 > a,
+         section > h4 > a,
+         section > h5 > a,
+         section > h6 > a {
+             text-decoration: none;
+             position: relative;
+         }
+         section > h1:hover > a::after,
+         section > h2:hover > a::after,
+         section > h3:hover > a::after,
+         section > h4:hover > a::after,
+         section > h5:hover > a::after,
+         section > h6:hover > a::after {
+             content: " #";
+             color: var(--link-color);
+             position: absolute;
+             left: -1em;
+         }
+         p > a {
+             transition: color 0.25s ease-in-out;
+         }
+         p > a:hover {
+             color: var(--link-color);
+         }
+        </style>
+    </head>
+    <body>
+        <div class="content">
+                                    <header id="title-block-header">
+                <h1 class="title">Blogging in GitHub: Sweet spot or
+overkill?</h1>
+                                                <p class="author">arcmode</p>
+                                                <p class="date">2023-10-09</p>
+                            </header>
+                                    <nav id="TOC" role="doc-toc">
+                                <ul class="incremental">
+                                <li><a href="#hello-world"
+                                id="toc-hello-world">Hello
+                                world</a></li>
+                                <li><a href="#goals"
+                                id="toc-goals">Goals</a></li>
+                                <li><a
+                                href="#the-tools-i-am-using-and-why"
+                                id="toc-the-tools-i-am-using-and-why">The
+                                tools I am using and why</a>
+                                <ul class="incremental">
+                                <li><a href="#pandoc"
+                                id="toc-pandoc">Pandoc</a></li>
+                                <li><a href="#github-pages"
+                                id="toc-github-pages">GitHub
+                                Pages</a></li>
+                                <li><a href="#gnu-make"
+                                id="toc-gnu-make">GNU Make</a></li>
+                                <li><a href="#why-org-mode"
+                                id="toc-why-org-mode">Why Org
+                                mode</a></li>
+                                <li><a href="#why-latex"
+                                id="toc-why-latex">Why LaTeX</a></li>
+                                </ul></li>
+                                <li><a href="#architecture"
+                                id="toc-architecture">Architecture</a>
+                                <ul class="incremental">
+                                <li><a
+                                href="#files-and-directories-structure"
+                                id="toc-files-and-directories-structure">Files
+                                and directories structure</a></li>
+                                <li><a href="#boilerplate-scripts"
+                                id="toc-boilerplate-scripts">Boilerplate
+                                scripts</a></li>
+                                <li><a href="#build-and-deployment"
+                                id="toc-build-and-deployment">Build and
+                                deployment</a></li>
+                                </ul></li>
+                                </ul>
+            </nav>
+                        <section id="hello-world" class="level1">
+                        <h1><a href="#hello-world">Hello world</a></h1>
+                        <p>Hey there, this is the first post on my
+                        personal blog. The blog and each post is going
+                        to be generated with <a
+                        href="http://pandoc.org/">Pandoc</a> from
+                        Markdown, Org and LaTeX files and it will be
+                        published as a GitHub page. The rest of this
+                        document describes the motivation, ideas and
+                        learnings around this process. In the following
+                        sections I explain the motivation behind each
+                        tool I am planning to use.</p>
+                        </section>
+                        <section id="goals" class="level1">
+                        <h1><a href="#goals">Goals</a></h1>
+                        <p>I also want to follow a few goals for the
+                        development of my blogging system.</p>
+                        <ol class="incremental">
+                        <li>Don't reinvent the wheel. Reuse standard
+                        tools when possible</li>
+                        <li>Use the minimum amount of code that is
+                        reasonable for each task</li>
+                        <li>Write posts about the development of the
+                        blogging system itself</li>
+                        <li>Have fun!</li>
+                        </ol>
+                        <p>Hopefully this approach will provide me with
+                        a sweet spot for my goals for casual blogging
+                        and will not turn out to be an overkill. I have
+                        tried other approaches in the past like
+                        Postachio and Medium and both were fun but I
+                        tend to spend more time working on side projects
+                        than writing about them, so I figured that
+                        perhaps if my side project is actually about how
+                        to write about side projects I might be able to
+                        find a good balance.</p>
+                        </section>
+                        <section id="the-tools-i-am-using-and-why"
+                        class="level1">
+                        <h1><a href="#the-tools-i-am-using-and-why">The
+                        tools I am using and why</a></h1>
+                        <p>A couple of years ago I found examples of
+                        people using this approach so I decided to make
+                        my own borrwing some code snippets that I needed
+                        to get started.</p>
+                        <section id="pandoc" class="level2">
+                        <h2><a href="#pandoc">Pandoc</a></h2>
+                        <p><a href="https://pandoc.org/">Pandoc</a> is a
+                        great tool for publishing and converting
+                        documents that understands multiple formats. It
+                        makes sense for my blog to leverage Pandoc
+                        instead of writting HTML files directly because
+                        it offers me the ability to mix different
+                        sources like Markdown, Org mode and LaTeX all of
+                        which suit different use cases. For example,
+                        Markdown is great for simple documents and
+                        Pandoc allows you to target GirHub Flavoured
+                        Markdown which is cool, because that means I can
+                        use it to turn the landing page of my personal
+                        website into a <code
+                        class="verbatim">Readme.md</code> file for my
+                        GitHub Profile. When I need to include source
+                        files or snippets in a given article, I can
+                        choose Org mode as source and leverage the
+                        plethora of features baked into it. If I want to
+                        write something that involves any math, I can
+                        use LaTeX either as a standaline <code
+                        class="verbatim">.tex</code> file or within Org
+                        mode.</p>
+                        </section>
+                        <section id="github-pages" class="level2">
+                        <h2><a href="#github-pages">GitHub
+                        Pages</a></h2>
+                        <p>Github pages are just great. It allows you to
+                        quickly deploy a website and being GitHub it
+                        makes even more convenient for deploying a
+                        simple website because it is directly tied to
+                        your repository's remote, so all you have to do
+                        to deploy is to <code
+                        class="verbatim">git push</code>.</p>
+                        </section>
+                        <section id="gnu-make" class="level2">
+                        <h2><a href="#gnu-make">GNU Make</a></h2>
+                        <p><a
+                        href="https://www.gnu.org/software/make/">GNU
+                        Make</a> is a tool for working with source
+                        files, generally used in C/C++ codebases but not
+                        limited to that domain. It has a rich set of
+                        features that allow you to maintain build graphs
+                        of different levels of complexity. In this case
+                        I plan to use a single Makefile to convert the
+                        source files with Pandoc and to deploy the
+                        results to Github.</p>
+                        <p>In summary, the tools I am using at the
+                        moment for each concern are the following:</p>
+                        <ol class="incremental">
+                        <li>Posts source
+                        <ol class="incremental">
+                        <li>MarkDown</li>
+                        <li>Org mode</li>
+                        <li>LaTeX</li>
+                        </ol></li>
+                        <li>Build system
+                        <ol class="incremental">
+                        <li>Make</li>
+                        <li>Pandoc</li>
+                        </ol></li>
+                        <li>Deployment system
+                        <ol class="incremental">
+                        <li>Make</li>
+                        <li>GitHub Pages</li>
+                        </ol></li>
+                        </ol>
+                        </section>
+                        <section id="why-org-mode" class="level2">
+                        <h2><a href="#why-org-mode">Why Org
+                        mode</a></h2>
+                        <p>The initial setup for this blog was based on
+                        Markdown only but given Pandoc offers Org mode
+                        support I figured it would be a great option to
+                        have as well.</p>
+                        <p>Some of the things I like the most about Org
+                        mode:</p>
+                        <ol class="incremental">
+                        <li>Emacs support</li>
+                        <li>Pandoc compatible</li>
+                        <li>Multi-purpose: documentation, literate
+                        coding, blogging, writing, etc…</li>
+                        </ol>
+                        </section>
+                        <section id="why-latex" class="level2">
+                        <h2><a href="#why-latex">Why LaTeX</a></h2>
+                        <p>I fell in love with LaTeX when I was a
+                        student. I don't have a good excuse yet to use
+                        it in the blog but I am hoping to find one soon.
+                        Until then I will not expand on it. If you are
+                        not familiar with LaTeX don't worry as it is not
+                        required for anything related to blogging or
+                        anything at all regarding how to publish your
+                        blog as a GitHub Page.</p>
+                        </section>
+                        </section>
+                        <section id="architecture" class="level1">
+                        <h1><a
+                        href="#architecture">Architecture</a></h1>
+                        <p>The entire architecture is encapsulated in a
+                        single Makefile and the contract it defines with
+                        the source files in terms of directory
+                        structures and file extensions.</p>
+                        <section id="files-and-directories-structure"
+                        class="level2">
+                        <h2><a
+                        href="#files-and-directories-structure">Files
+                        and directories structure</a></h2>
+                        <p>For example, files with supported extensions
+                        for the blogging source files are expected to be
+                        present at <code
+                        class="verbatim">blog/*/*.{md,org,text}</code>
+                        where the first level after blog signifies a
+                        given series of posts as a filesystem directory
+                        and the second one is expected to target each
+                        individual post under that series.</p>
+                        </section>
+                        <section id="boilerplate-scripts"
+                        class="level2">
+                        <h2><a href="#boilerplate-scripts">Boilerplate
+                        scripts</a></h2>
+                        <p>This structure will require three small
+                        scripts in order to generate index files for the
+                        blog root and for each series. For this I am
+                        using some python scripts I borrowed long time
+                        ago. I have tried to find the original author to
+                        given them credit but have not been able to.</p>
+                        <p>The first file to cover converts directory
+                        paths to titles. This is used to create a title
+                        for the index file of each series.</p>
+                        <div class="sourceCode" id="cb1"><pre
+                        class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/usr/bin/env python3</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> main():</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> line <span class="kw">in</span> sys.stdin:</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        dirname <span class="op">=</span> line.rstrip().lstrip()</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>        (rawtitle,) <span class="op">=</span> re.search(<span class="vs">r&#39;^.*\/([^\/]+)\/?$&#39;</span>, dirname).groups()</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>        title <span class="op">=</span> rawtitle.replace(<span class="st">&#39;-&#39;</span>, <span class="st">&#39; &#39;</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>        sys.stdout.write(title)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>        sys.stdout.write(<span class="st">&#39;</span><span class="ch">\n</span><span class="st">&#39;</span>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span><span class="op">==</span><span class="st">&#39;__main__&#39;</span>:</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    main()</span></code></pre></div>
+                        <p>The second file converts a list of filenames
+                        to an index. This is used to build the actual
+                        index of each series.</p>
+                        <div class="sourceCode" id="cb2"><pre
+                        class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/usr/bin/env python3</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> main():</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i, line <span class="kw">in</span> <span class="bu">enumerate</span>(sys.stdin):</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        filename <span class="op">=</span> line.rstrip().lstrip()</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>        (rawtitle,) <span class="op">=</span> re.search(<span class="vs">r&#39;^(.+)\..*$&#39;</span>, filename).groups()</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>        title <span class="op">=</span> rawtitle.replace(<span class="st">&#39;-&#39;</span>, <span class="st">&#39; &#39;</span>)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>        sys.stdout.write(<span class="ss">f&#39;### [</span><span class="sc">{</span>i<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss">. </span><span class="sc">{</span>title<span class="sc">}</span><span class="ss">]&#39;</span>)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>        sys.stdout.write(<span class="ss">f&#39;(</span><span class="sc">{</span>re<span class="sc">.</span>sub(<span class="vs">r&#39;\..*$&#39;</span>, <span class="st">&#39;.html&#39;</span>, filename)<span class="sc">}</span><span class="ss">)&#39;</span>)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>        sys.stdout.write(<span class="st">&#39;</span><span class="ch">\n</span><span class="st">&#39;</span>)</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span><span class="op">==</span><span class="st">&#39;__main__&#39;</span>:</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    main()</span></code></pre></div>
+                        <p>The third file converts directory paths to an
+                        index. This is used to build the root index for
+                        the entire blog.</p>
+                        <div class="sourceCode" id="cb3"><pre
+                        class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#!/usr/bin/env python3</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> main():</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> line <span class="kw">in</span> sys.stdin:</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        dirname <span class="op">=</span> line.rstrip().lstrip()</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        title <span class="op">=</span> dirname.replace(<span class="st">&#39;-&#39;</span>, <span class="st">&#39; &#39;</span>)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>        sys.stdout.write(<span class="ss">f&#39;### [</span><span class="sc">{</span>title<span class="sc">}</span><span class="ss">]&#39;</span>)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>        sys.stdout.write(<span class="ss">f&#39;(</span><span class="sc">{</span>dirname<span class="sc">}</span><span class="ss">/index.html)&#39;</span>)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>        sys.stdout.write(<span class="st">&#39;</span><span class="ch">\n</span><span class="st">&#39;</span>)</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="va">__name__</span><span class="op">==</span><span class="st">&#39;__main__&#39;</span>:</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    main()</span></code></pre></div>
+                        </section>
+                        <section id="build-and-deployment"
+                        class="level2">
+                        <h2><a href="#build-and-deployment">Build and
+                        deployment</a></h2>
+                        <p>Currently the repository contains two
+                        deployment targets managed as git remotes. This
+                        works because GitHub automatically deploys the
+                        static files on repositories following their
+                        guidelines. You can google for GitHub pages and
+                        GitHub profiles to learn about the details.</p>
+                        <p>The blog and profile are generated as
+                        different folders using Pandoc, then each output
+                        is pushed to the respective git remote. The blog
+                        uses <code class="verbatim">origin</code> and
+                        the profile page uses a git sub-tree targeting
+                        it's own remote.</p>
+                        <ol class="incremental">
+                        <li>Blog -&gt;
+                        github:&lt;username&gt;.github.io.git</li>
+                        <li>Profile -&gt;
+                        github:&lt;username&gt;.git</li>
+                        </ol>
+                        <p>That's it for now. Here's the Makefile if you
+                        want to take a look. You can also find it in the
+                        <a
+                        href="https://github.com/arcmode/arcmode.github.io">repo</a></p>
+                        <div class="sourceCode" id="cb4"><pre
+                        class="sourceCode makefile"><code class="sourceCode makefile"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="dv">all:</span><span class="dt"> </span><span class="ch">$(</span><span class="dt">blog</span><span class="ch">)</span><span class="dt"> blog_index profile</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="dv">clean:</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>	<span class="ch">@</span><span class="fu">(rm -fr </span><span class="ch">$(</span><span class="dt">dist_path</span><span class="ch">)</span><span class="fu"> 2&gt;/dev/null || true) &amp;&amp; mkdir -p {</span><span class="ch">$(</span><span class="dt">profile_dist</span><span class="ch">)</span><span class="fu">,</span><span class="ch">$(</span><span class="dt">blog_dist</span><span class="ch">)</span><span class="fu">}</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="dv">print-%:</span><span class="dt"> </span><span class="ch">;</span> <span class="ch">@</span><span class="fu">echo </span><span class="ch">$*</span><span class="fu">=</span><span class="ch">$($*)</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">########### VARIABLES #############</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="dt">blog_src</span> <span class="ch">=</span><span class="st"> ./blog</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="dt">dist_path</span> <span class="ch">=</span><span class="st"> ./dist</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="dt">blog_dist</span> <span class="ch">=</span><span class="st"> ./dist/blog</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="dt">profile_dist</span> <span class="ch">=</span><span class="st"> ./dist/profile</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="dt">profile_prefix</span> <span class="ch">=</span><span class="st"> &#39;dist/profile&#39;</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="dt">profile_remote</span> <span class="ch">=</span><span class="st"> &#39;gh-profile&#39;</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="dt">profile_remote_url</span> <span class="ch">=</span><span class="st"> &#39;https://github.com/</span><span class="ch">$(</span><span class="dt">GH_USER</span><span class="ch">)</span><span class="st">/</span><span class="ch">$(</span><span class="dt">GH_USER</span><span class="ch">)</span><span class="st">.git&#39;</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="dt">blog_posts_wip_src</span> <span class="ch">:=</span><span class="st"> </span><span class="ch">$(</span><span class="kw">wildcard</span><span class="st"> </span><span class="ch">$(</span><span class="dt">blog_src</span><span class="ch">)</span><span class="st">/*/WIP_*</span><span class="ch">)</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="dt">blog_posts_src</span> <span class="ch">:=</span><span class="st"> </span><span class="ch">$(</span><span class="kw">filter-out</span><span class="st"> </span><span class="ch">$(</span><span class="dt">blog_posts_wip_src</span><span class="ch">)</span><span class="kw">,</span><span class="st"> </span><span class="ch">$(</span><span class="kw">wildcard</span><span class="st"> </span><span class="ch">$(</span><span class="dt">blog_src</span><span class="ch">)</span><span class="st">/*/*.md</span><span class="ch">)</span><span class="st"> \</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="st">									</span><span class="ch">$(</span><span class="kw">wildcard</span><span class="st"> </span><span class="ch">$(</span><span class="dt">blog_src</span><span class="ch">)</span><span class="st">/*/*.org</span><span class="ch">)</span><span class="st"> \</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="st">									</span><span class="ch">$(</span><span class="kw">wildcard</span><span class="st"> </span><span class="ch">$(</span><span class="dt">blog_src</span><span class="ch">)</span><span class="st">/*/*.tex</span><span class="ch">))</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="dt">blog</span> <span class="ch">:=</span><span class="st"> </span><span class="ch">$(</span><span class="kw">patsubst</span><span class="st"> </span><span class="ch">$(</span><span class="dt">blog_src</span><span class="ch">)</span><span class="st">/%.org</span><span class="kw">,</span><span class="ch">$(</span><span class="dt">blog_dist</span><span class="ch">)</span><span class="st">/%.html</span><span class="kw">,</span><span class="st"> \</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a><span class="st">					</span><span class="ch">$(</span><span class="kw">patsubst</span><span class="st"> </span><span class="ch">$(</span><span class="dt">blog_src</span><span class="ch">)</span><span class="st">/%.md</span><span class="kw">,</span><span class="ch">$(</span><span class="dt">blog_dist</span><span class="ch">)</span><span class="st">/%.html</span><span class="kw">,</span><span class="st"> \</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="st">					</span><span class="ch">$(</span><span class="kw">patsubst</span><span class="st"> </span><span class="ch">$(</span><span class="dt">blog_src</span><span class="ch">)</span><span class="st">/%.tex</span><span class="kw">,</span><span class="ch">$(</span><span class="dt">blog_dist</span><span class="ch">)</span><span class="st">/%.html</span><span class="kw">,</span><span class="st"> \</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a><span class="st">						</span><span class="ch">$(</span><span class="dt">blog_posts_src</span><span class="ch">))))</span></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a><span class="co">########### BLOG #############</span></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a><span class="dv">$(blog_dist)/%.html:</span><span class="dt"> </span><span class="ch">$(</span><span class="dt">blog_src</span><span class="ch">)</span><span class="dt">/%.md</span></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>	<span class="ch">@</span><span class="fu">mkdir -p </span><span class="ch">$(</span><span class="dt">@D</span><span class="ch">)</span></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>	<span class="ch">@</span><span class="fu">pandoc -i </span><span class="ch">$&lt;</span><span class="fu"> -t html -o </span><span class="ch">$@</span><span class="fu"> </span><span class="ch">\</span></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a><span class="fu">		--template ./templates/root.html </span><span class="ch">\</span></span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a><span class="fu">		--toc </span><span class="ch">\</span></span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a><span class="fu">		--section-divs </span><span class="ch">\</span></span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a><span class="fu">		--include-in-header=./templates/fortune-cookie-component.html </span><span class="ch">\</span></span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a><span class="fu">		--include-after-body=./templates/thank-you-note.html </span><span class="ch">\</span></span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a><span class="fu">		--include-after-body=./templates/footer.html</span></span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a><span class="dv">$(blog_dist)/%.html:</span><span class="dt"> </span><span class="ch">$(</span><span class="dt">blog_src</span><span class="ch">)</span><span class="dt">/%.org</span></span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>	<span class="ch">@</span><span class="fu">mkdir -p </span><span class="ch">$(</span><span class="dt">@D</span><span class="ch">)</span></span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>	<span class="ch">@</span><span class="fu">pandoc -f org -i </span><span class="ch">$&lt;</span><span class="fu"> -t html -o </span><span class="ch">$@</span><span class="fu"> </span><span class="ch">\</span></span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a><span class="fu">		--template ./templates/root.html </span><span class="ch">\</span></span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a><span class="fu">		--toc </span><span class="ch">\</span></span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a><span class="fu">		--section-divs </span><span class="ch">\</span></span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a><span class="fu">		--lua-filter=./pandoc_filters/permalinks/permalinks.lua </span><span class="ch">\</span></span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a><span class="fu">		--include-in-header=./templates/fortune-cookie-component.html </span><span class="ch">\</span></span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a><span class="fu">		--include-after-body=./templates/thank-you-note.html </span><span class="ch">\</span></span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a><span class="fu">		--include-after-body=./templates/footer.html</span></span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a><span class="dv">$(blog_dist)/%.html:</span><span class="dt"> </span><span class="ch">$(</span><span class="dt">blog_src</span><span class="ch">)</span><span class="dt">/%.tex</span></span>
+<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a>	<span class="ch">@</span><span class="fu">mkdir -p </span><span class="ch">$(</span><span class="dt">@D</span><span class="ch">)</span></span>
+<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a>	<span class="ch">@</span><span class="fu">pandoc -f latex -i </span><span class="ch">$&lt;</span><span class="fu"> -t html -o </span><span class="ch">$@</span><span class="fu"> </span><span class="ch">\</span></span>
+<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a><span class="fu">		--template ./templates/root.html </span><span class="ch">\</span></span>
+<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a><span class="fu">		--toc </span><span class="ch">\</span></span>
+<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a><span class="fu">		--section-divs </span><span class="ch">\</span></span>
+<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a><span class="fu">		--include-in-header=./templates/fortune-cookie-component.html </span><span class="ch">\</span></span>
+<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a><span class="fu">		--include-after-body=./templates/thank-you-note.html </span><span class="ch">\</span></span>
+<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a><span class="fu">		--include-after-body=./templates/footer.html</span></span>
+<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a><span class="dv">remove_index:</span></span>
+<span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a>	<span class="ch">@</span><span class="fu">rm </span><span class="ch">$(</span><span class="dt">blog_dist</span><span class="ch">)</span><span class="fu">/index.html 2&gt;/dev/null || true</span></span>
+<span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-62"><a href="#cb4-62" aria-hidden="true" tabindex="-1"></a><span class="dv">blog_index:</span><span class="dt"> </span><span class="ch">$(</span><span class="dt">blog</span><span class="ch">)</span><span class="dt"> remove_index</span></span>
+<span id="cb4-63"><a href="#cb4-63" aria-hidden="true" tabindex="-1"></a>	<span class="ch">@$(</span><span class="kw">foreach</span><span class="st"> series</span><span class="kw">,</span><span class="st"> </span><span class="ch">$(</span><span class="kw">wildcard</span><span class="st"> </span><span class="ch">$(</span><span class="dt">blog_dist</span><span class="ch">)</span><span class="st">/*</span><span class="ch">)</span><span class="kw">,</span><span class="st"> \</span></span>
+<span id="cb4-64"><a href="#cb4-64" aria-hidden="true" tabindex="-1"></a><span class="st">		ls </span><span class="ch">$(</span><span class="dt">series</span><span class="ch">)</span><span class="st"> \</span></span>
+<span id="cb4-65"><a href="#cb4-65" aria-hidden="true" tabindex="-1"></a><span class="st">			| grep -v index.html \</span></span>
+<span id="cb4-66"><a href="#cb4-66" aria-hidden="true" tabindex="-1"></a><span class="st">			| ./scripts/filename2index.py \</span></span>
+<span id="cb4-67"><a href="#cb4-67" aria-hidden="true" tabindex="-1"></a><span class="st">			| pandoc -t html -o </span><span class="ch">$(</span><span class="dt">series</span><span class="ch">)</span><span class="st">/index.html \</span></span>
+<span id="cb4-68"><a href="#cb4-68" aria-hidden="true" tabindex="-1"></a><span class="st">				--metadata title:&quot;</span><span class="ch">$(</span><span class="kw">shell</span><span class="st"> echo &#39;</span><span class="ch">$(</span><span class="dt">series</span><span class="ch">)</span><span class="st">&#39; | ./scripts/directory2title.py</span><span class="ch">)</span><span class="st">&quot; \</span></span>
+<span id="cb4-69"><a href="#cb4-69" aria-hidden="true" tabindex="-1"></a><span class="st">				--template ./templates/root.html \</span></span>
+<span id="cb4-70"><a href="#cb4-70" aria-hidden="true" tabindex="-1"></a><span class="st">				--include-after-body=./templates/footer.html;</span><span class="ch">)</span></span>
+<span id="cb4-71"><a href="#cb4-71" aria-hidden="true" tabindex="-1"></a>	<span class="ch">@</span><span class="fu">ls </span><span class="ch">$(</span><span class="dt">blog_dist</span><span class="ch">)</span><span class="fu"> </span><span class="ch">\</span></span>
+<span id="cb4-72"><a href="#cb4-72" aria-hidden="true" tabindex="-1"></a><span class="fu">	  	| grep -v index.html </span><span class="ch">\</span></span>
+<span id="cb4-73"><a href="#cb4-73" aria-hidden="true" tabindex="-1"></a><span class="fu">	  	| ./scripts/directory2index.py </span><span class="ch">\</span></span>
+<span id="cb4-74"><a href="#cb4-74" aria-hidden="true" tabindex="-1"></a><span class="fu">	  	| pandoc -t html -o </span><span class="ch">$(</span><span class="dt">blog_dist</span><span class="ch">)</span><span class="fu">/index.html </span><span class="ch">\</span></span>
+<span id="cb4-75"><a href="#cb4-75" aria-hidden="true" tabindex="-1"></a><span class="fu">				--metadata title:</span><span class="st">&quot;</span><span class="ch">$(</span><span class="dt">GH_USER</span><span class="ch">)</span><span class="st">/blog&quot;</span><span class="fu"> </span><span class="ch">\</span></span>
+<span id="cb4-76"><a href="#cb4-76" aria-hidden="true" tabindex="-1"></a><span class="fu">	  		--template ./templates/root.html </span><span class="ch">\</span></span>
+<span id="cb4-77"><a href="#cb4-77" aria-hidden="true" tabindex="-1"></a><span class="fu">				--include-after-body=./templates/footer.html</span></span>
+<span id="cb4-78"><a href="#cb4-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-79"><a href="#cb4-79" aria-hidden="true" tabindex="-1"></a><span class="co">########### PROFILE #############</span></span>
+<span id="cb4-80"><a href="#cb4-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-81"><a href="#cb4-81" aria-hidden="true" tabindex="-1"></a><span class="dv">profile:</span><span class="dt"> </span><span class="ch">$(</span><span class="kw">wildcard</span><span class="st"> ./README.org</span><span class="ch">)</span><span class="dt"> </span><span class="ch">$(</span><span class="kw">wildcard</span><span class="st"> ./README.md</span><span class="ch">)</span></span>
+<span id="cb4-82"><a href="#cb4-82" aria-hidden="true" tabindex="-1"></a>	<span class="ch">@</span><span class="fu">[[ -f ./README.org ]] &amp;&amp; bash -c </span><span class="st">&#39;cat ./README.org \</span></span>
+<span id="cb4-83"><a href="#cb4-83" aria-hidden="true" tabindex="-1"></a><span class="st">		| tee &gt;(pandoc -f org -t gfm -o </span><span class="ch">$(</span><span class="dt">profile_dist</span><span class="ch">)</span><span class="st">/README.md) \</span></span>
+<span id="cb4-84"><a href="#cb4-84" aria-hidden="true" tabindex="-1"></a><span class="st">		| pandoc -f org -t html -o ./index.html --template ./templates/root.html \</span></span>
+<span id="cb4-85"><a href="#cb4-85" aria-hidden="true" tabindex="-1"></a><span class="st">			--include-in-header=./templates/fortune-cookie-component.html \</span></span>
+<span id="cb4-86"><a href="#cb4-86" aria-hidden="true" tabindex="-1"></a><span class="st">			--include-after-body=./templates/thank-you-note.html \</span></span>
+<span id="cb4-87"><a href="#cb4-87" aria-hidden="true" tabindex="-1"></a><span class="st">			--include-after-body=./templates/footer.html&#39;</span><span class="fu"> </span><span class="ch">\</span></span>
+<span id="cb4-88"><a href="#cb4-88" aria-hidden="true" tabindex="-1"></a><span class="fu">			|| true</span></span>
+<span id="cb4-89"><a href="#cb4-89" aria-hidden="true" tabindex="-1"></a>	<span class="ch">@</span><span class="fu">[[ -f ./README.md ]] &amp;&amp; bash -c </span><span class="st">&#39;cat ./README.md \</span></span>
+<span id="cb4-90"><a href="#cb4-90" aria-hidden="true" tabindex="-1"></a><span class="st">		| tee &gt;(pandoc -t gfm -o </span><span class="ch">$(</span><span class="dt">profile_dist</span><span class="ch">)</span><span class="st">/README.md) \</span></span>
+<span id="cb4-91"><a href="#cb4-91" aria-hidden="true" tabindex="-1"></a><span class="st">		| pandoc -t html -o ./index.html --template ./templates/root.html \</span></span>
+<span id="cb4-92"><a href="#cb4-92" aria-hidden="true" tabindex="-1"></a><span class="st">			--include-in-header=./templates/fortune-cookie-component.html \</span></span>
+<span id="cb4-93"><a href="#cb4-93" aria-hidden="true" tabindex="-1"></a><span class="st">			--include-after-body=./templates/thank-you-note.html \</span></span>
+<span id="cb4-94"><a href="#cb4-94" aria-hidden="true" tabindex="-1"></a><span class="st">			--include-after-body=./templates/footer.html&#39;</span><span class="fu"> </span><span class="ch">\</span></span>
+<span id="cb4-95"><a href="#cb4-95" aria-hidden="true" tabindex="-1"></a><span class="fu">			|| true</span></span>
+<span id="cb4-96"><a href="#cb4-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-97"><a href="#cb4-97" aria-hidden="true" tabindex="-1"></a><span class="co">########### DEPLOY #############</span></span>
+<span id="cb4-98"><a href="#cb4-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-99"><a href="#cb4-99" aria-hidden="true" tabindex="-1"></a><span class="dv">commit:</span></span>
+<span id="cb4-100"><a href="#cb4-100" aria-hidden="true" tabindex="-1"></a><span class="cf">ifneq</span> (<span class="ch">$(</span><span class="kw">shell</span><span class="st"> git status --short</span><span class="ch">)</span>,)</span>
+<span id="cb4-101"><a href="#cb4-101" aria-hidden="true" tabindex="-1"></a>	<span class="ch">@</span><span class="fu">git checkout master</span></span>
+<span id="cb4-102"><a href="#cb4-102" aria-hidden="true" tabindex="-1"></a>	<span class="ch">@</span><span class="fu">git add .</span></span>
+<span id="cb4-103"><a href="#cb4-103" aria-hidden="true" tabindex="-1"></a>	<span class="ch">@</span><span class="fu">git commit</span></span>
+<span id="cb4-104"><a href="#cb4-104" aria-hidden="true" tabindex="-1"></a><span class="cf">endif</span></span>
+<span id="cb4-105"><a href="#cb4-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-106"><a href="#cb4-106" aria-hidden="true" tabindex="-1"></a><span class="dv">rebase:</span></span>
+<span id="cb4-107"><a href="#cb4-107" aria-hidden="true" tabindex="-1"></a>	<span class="ch">@</span><span class="fu">git checkout master </span><span class="ch">\</span></span>
+<span id="cb4-108"><a href="#cb4-108" aria-hidden="true" tabindex="-1"></a><span class="fu">		&amp;&amp; git fetch --all </span><span class="ch">\</span></span>
+<span id="cb4-109"><a href="#cb4-109" aria-hidden="true" tabindex="-1"></a><span class="fu">		&amp;&amp; git pull --rebase origin master </span><span class="ch">\</span></span>
+<span id="cb4-110"><a href="#cb4-110" aria-hidden="true" tabindex="-1"></a><span class="fu">    --recurse-submodules</span></span>
+<span id="cb4-111"><a href="#cb4-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-112"><a href="#cb4-112" aria-hidden="true" tabindex="-1"></a><span class="dv">deploy-profile:</span></span>
+<span id="cb4-113"><a href="#cb4-113" aria-hidden="true" tabindex="-1"></a>	<span class="ch">@</span><span class="fu">git checkout master </span><span class="ch">\</span></span>
+<span id="cb4-114"><a href="#cb4-114" aria-hidden="true" tabindex="-1"></a><span class="fu">		&amp;&amp; git diff --quiet </span><span class="ch">\</span></span>
+<span id="cb4-115"><a href="#cb4-115" aria-hidden="true" tabindex="-1"></a><span class="fu">		&amp;&amp; git subtree split --prefix </span><span class="ch">$(</span><span class="dt">profile_prefix</span><span class="ch">)</span><span class="fu"> -b gh-profile </span><span class="ch">\</span></span>
+<span id="cb4-116"><a href="#cb4-116" aria-hidden="true" tabindex="-1"></a><span class="fu">		&amp;&amp; git push -f </span><span class="ch">$(</span><span class="dt">profile_remote</span><span class="ch">)</span><span class="fu"> gh-profile:master </span><span class="ch">\</span></span>
+<span id="cb4-117"><a href="#cb4-117" aria-hidden="true" tabindex="-1"></a><span class="fu">		&amp;&amp; git branch -D gh-profile</span></span>
+<span id="cb4-118"><a href="#cb4-118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-119"><a href="#cb4-119" aria-hidden="true" tabindex="-1"></a><span class="dv">deploy-blog:</span></span>
+<span id="cb4-120"><a href="#cb4-120" aria-hidden="true" tabindex="-1"></a>	<span class="ch">@</span><span class="fu">git checkout master </span><span class="ch">\</span></span>
+<span id="cb4-121"><a href="#cb4-121" aria-hidden="true" tabindex="-1"></a><span class="fu">		&amp;&amp; git diff --quiet </span><span class="ch">\</span></span>
+<span id="cb4-122"><a href="#cb4-122" aria-hidden="true" tabindex="-1"></a><span class="fu">		&amp;&amp; git push origin master --force</span></span>
+<span id="cb4-123"><a href="#cb4-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-124"><a href="#cb4-124" aria-hidden="true" tabindex="-1"></a><span class="dv">deploy-all:</span><span class="dt"> commit rebase deploy-blog deploy-profile</span></span>
+<span id="cb4-125"><a href="#cb4-125" aria-hidden="true" tabindex="-1"></a><span class="dv">deploy-quick:</span><span class="dt"> deploy-blog deploy-profile</span></span>
+<span id="cb4-126"><a href="#cb4-126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-127"><a href="#cb4-127" aria-hidden="true" tabindex="-1"></a><span class="co">########### INIT #############</span></span>
+<span id="cb4-128"><a href="#cb4-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-129"><a href="#cb4-129" aria-hidden="true" tabindex="-1"></a><span class="dv">init-profile-remote:</span></span>
+<span id="cb4-130"><a href="#cb4-130" aria-hidden="true" tabindex="-1"></a>	<span class="ch">@</span><span class="fu">(git remote rm </span><span class="ch">$(</span><span class="dt">profile_remote</span><span class="ch">)</span><span class="fu"> 2&gt;/dev/null </span><span class="ch">\</span></span>
+<span id="cb4-131"><a href="#cb4-131" aria-hidden="true" tabindex="-1"></a><span class="fu">		&amp;&amp; git remote add </span><span class="ch">$(</span><span class="dt">profile_remote</span><span class="ch">)</span><span class="fu"> </span><span class="ch">$(</span><span class="dt">profile_remote_url</span><span class="ch">)</span><span class="fu">) </span><span class="ch">\</span></span>
+<span id="cb4-132"><a href="#cb4-132" aria-hidden="true" tabindex="-1"></a><span class="fu">		|| git remote add </span><span class="ch">$(</span><span class="dt">profile_remote</span><span class="ch">)</span><span class="fu"> </span><span class="ch">$(</span><span class="dt">profile_remote_url</span><span class="ch">)</span></span>
+<span id="cb4-133"><a href="#cb4-133" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-134"><a href="#cb4-134" aria-hidden="true" tabindex="-1"></a><span class="dv">init-profile:</span><span class="dt"> init-profile-remote</span></span>
+<span id="cb4-135"><a href="#cb4-135" aria-hidden="true" tabindex="-1"></a>	<span class="ch">@</span><span class="fu">[[ -d </span><span class="ch">$(</span><span class="dt">profile_dist</span><span class="ch">)</span><span class="fu"> ]] </span><span class="ch">\</span></span>
+<span id="cb4-136"><a href="#cb4-136" aria-hidden="true" tabindex="-1"></a><span class="fu">		|| git subtree add --prefix </span><span class="ch">$(</span><span class="dt">profile_dist</span><span class="ch">)</span><span class="fu"> </span><span class="ch">$(</span><span class="dt">profile_remote</span><span class="ch">)</span><span class="fu"> master -m </span><span class="st">&#39;🤖 add profile subtree&#39;</span></span>
+<span id="cb4-137"><a href="#cb4-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-138"><a href="#cb4-138" aria-hidden="true" tabindex="-1"></a><span class="dv">init:</span><span class="dt"> clean init-profile-remote init-profile</span></span>
+<span id="cb4-139"><a href="#cb4-139" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-140"><a href="#cb4-140" aria-hidden="true" tabindex="-1"></a><span class="co">########### </span><span class="re">END</span><span class="co"> #############</span></span>
+<span id="cb4-141"><a href="#cb4-141" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-142"><a href="#cb4-142" aria-hidden="true" tabindex="-1"></a><span class="ot">.PHONY:</span><span class="dt"> all deploy-all deploy-blog deploy-profile init-profile-remote init-profile clean init commit rebase</span></span></code></pre></div>
+                        </section>
+                        </section>
+        </div>
+                <p>
+                    Thanks for reading, if you have any questions feel free to send me an
+                    <a href="mailto:drojascamaggi@gmail.com">email</a>. By the way, would
+                    you like a fortune cookie?
+                    <fortune-cookie></fortune-cookie>
+                </p>
+                <footer>
+                    <p>
+                        &copy; 2023 All rights reserved
+                    </p>
+                    <a href="https://arcmode.github.io/">Home</a>
+                    <a href="https://arcmode.github.io/dist/blog/">Blog</a>
+                    <a href="mailto:drojascamaggi@gmail.com">Contact</a>
+                </footer>
+                <br />
+            </body>
+</html>

@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
 
-import sys,re
+import sys
+import re
 
 def main():
     for line in sys.stdin:
         dirname = line.rstrip().lstrip()
-        title = dirname.replace('-', ' ')
-        sys.stdout.write('### ['+title+']')
-        sys.stdout.write('('+dirname+'/index.html'+')')
+        (rawtitle,) = re.search(r'^.*\/([^\/]+)\/?$', dirname).groups()
+        title = rawtitle.replace('-', ' ')
+        sys.stdout.write(title)
         sys.stdout.write('\n')
 
 if __name__=='__main__':

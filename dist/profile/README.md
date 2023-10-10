@@ -22,43 +22,59 @@ my [Github Page](https://pages.github.com/).
 1.  <span class="done DONE">DONE</span> Add Org Mode and Markdown
     support
 
-2.  <span class="todo TODO">TODO</span> Add fortune cookies
+2.  <span class="done DONE">DONE</span> Add fortune cookies
 
-3.  <span class="todo TODO">TODO</span> Make blog index include full
+3.  <span class="todo TODO">TODO</span> Try blockquote tag for fortune
+    cookie message
+
+4.  <span class="todo TODO">TODO</span> Investigate DRY for build.
+    Makefile reusable parts, pandoc configuration file
+
+5.  <span class="todo TODO">TODO</span> Try –number-sections
+
+6.  <span class="todo TODO">TODO</span> Investigate
+    –indented-code-classes
+
+7.  <span class="todo TODO">TODO</span> Check out pandocsql
+
+8.  <span class="todo TODO">TODO</span> Libraries to write Pandoc
+    filters in Rust, Guile, TypeScript (Deno or just Nodejs typings)
+
+9.  <span class="todo TODO">TODO</span> Make blog index include full
     hierarchy
 
-4.  <span class="todo TODO">TODO</span> Make blog index appear on posts
+10. <span class="todo TODO">TODO</span> Make blog index appear on posts
     with other series collapsed by default
 
-5.  <span class="todo TODO">TODO</span> Dark mode (dracula)
+11. <span class="todo TODO">TODO</span> Dark mode (dracula)
 
-6.  <span class="todo TODO">TODO</span> Dedicated templates/styles per
+12. <span class="todo TODO">TODO</span> Dedicated templates/styles per
     page/post for seasonal posts
 
-7.  <span class="todo TODO">TODO</span> Add blog index to home page
+13. <span class="todo TODO">TODO</span> Add blog index to home page
     (readme)
 
-8.  <span class="todo TODO">TODO</span> move blog to arcmode/blog
+14. <span class="todo TODO">TODO</span> move blog to arcmode/blog
 
-9.  <span class="todo TODO">TODO</span> specific templates (profile,
+15. <span class="todo TODO">TODO</span> specific templates (profile,
     homepage, blog root)
 
-10. <span class="todo TODO">TODO</span> boilerplate automation
+16. <span class="todo TODO">TODO</span> boilerplate automation
     (webcomponents)
 
-11. <span class="todo TODO">TODO</span> use target-specific variables
+17. <span class="todo TODO">TODO</span> use target-specific variables
     for pandoc formats
 
     <https://www.gnu.org/software/make/manual/make.html#Target_002dspecific>
 
-12. <span class="todo TODO">TODO</span> custom style for ascii art
+18. <span class="todo TODO">TODO</span> custom style for ascii art
 
     <https://www.patorjk.com/software/taag/#p=testall&v=0&f=Graffiti&t=PanBloKe>
 
-13. <span class="todo TODO">TODO</span> add configuration file following
+19. <span class="todo TODO">TODO</span> add configuration file following
     XDG conventions
 
     <https://gist.github.com/roalcantara/107ba66dfa3b9d023ac9329e639bc58c>
 
-14. <span class="todo TODO">TODO</span> split `index.html` of profile
+20. <span class="todo TODO">TODO</span> split `index.html` of profile
     repo and profile

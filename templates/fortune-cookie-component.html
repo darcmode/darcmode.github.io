@@ -18,6 +18,7 @@
 
          // Create the emoji element
          const emoji = document.createElement('span');
+         emoji.classList.add('fortune-cookie-emoji');
          emoji.textContent = '🥠';
 
          // Create the message container
@@ -36,10 +37,10 @@
          container.appendChild(messageContainer);
 
          // Attach a click event listener to toggle the message visibility
-         const listener = container.addEventListener('click', () => {
+         const listener = emoji.addEventListener('click', () => {
              messageContainer.style.visibility = 'visible';
              messageContainer.style.opacity = '1';
-             container.removeEventListener('click', listener);
+             emoji.removeEventListener('click', listener);
              container.classList.add('open');
          });
 
@@ -56,24 +57,33 @@
  /* Style for the fortune cookie emoji */
  .fortune-cookie {
      margin: 3rem 0;
-     cursor: pointer;
      font-size: 2rem;
      text-align: center;
-     text-shadow: 0 0 1px black, 0 0 1rem white, 0 0 2rem gold;
-     transition: text-shadow 0.5s linear;
  }
- .fortune-cookie.open {
+ .fortune-cookie-emoji {
+     cursor: pointer;
+     transition: text-shadow 0.5s ease-in-out;
+     text-shadow: 0 0 1px black, 0 0 1rem white, 0 0 2rem white;
+ }
+ .fortune-cookie:hover > .fortune-cookie-emoji {
+     text-shadow: 0 0 1px black, 0 0 1rem white, 0 0 2rem white, 0 0 3rem white;
+ }
+ .fortune-cookie.open > .fortune-cookie-emoji {
      text-shadow: 0 0 1px black;
      cursor: inherit;
  }
 
  /* Style for the message container */
- .message-container {
+ .fortune-cookie > .message-container {
      visibility: hidden;
      opacity: 0;
-     transition: visibility 0s, opacity 0.5s linear, text-shadow 0.5s linear;
-     margin-top: 1rem;
+     transition: visibility 0s, opacity 0.5s linear, text-shadow 0.5s ease-in-out;
+     /* margin-top: 2rem; */
      font-size: 1rem;
-     text-shadow: 0 0 1px white, 0 0 1rem gold, 0 0 1.5rem red;
+     transform: skewX(10deg);`
+ }
+ .fortune-cookie > .message-container > p > em {
+     background-color: seashell;
+     padding: 10px;
  }
 </style>

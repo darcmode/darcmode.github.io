@@ -16,13 +16,10 @@
           devShells.default = mkShell {
             buildInputs = [
               gnumake
-              python312
               pandoc
-
-              # typescript
-              pkgs.nodePackages.typescript
-              pkgs.nodePackages.typescript-language-server
-              pkgs.nodePackages.prettier
+              # python
+              python312
+              pyright
             ];
 
             shellHook = ''

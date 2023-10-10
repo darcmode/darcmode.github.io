@@ -30,7 +30,8 @@ $(blog_dist)/%.html: $(blog_src)/%.md
 	@pandoc -i $< -t html -o $@ \
 		--template ./templates/root.html \
 		--toc \
-		--include-after-body=./templates/fortune-cookie-component.html \
+		--section-divs \
+		--include-in-header=./templates/fortune-cookie-component.html \
 		--include-after-body=./templates/thank-you-note.html \
 		--include-after-body=./templates/footer.html
 
@@ -39,7 +40,9 @@ $(blog_dist)/%.html: $(blog_src)/%.org
 	@pandoc -f org -i $< -t html -o $@ \
 		--template ./templates/root.html \
 		--toc \
-		--include-after-body=./templates/fortune-cookie-component.html \
+		--section-divs \
+		--lua-filter=./pandoc_filters/permalinks/permalinks.lua \
+		--include-in-header=./templates/fortune-cookie-component.html \
 		--include-after-body=./templates/thank-you-note.html \
 		--include-after-body=./templates/footer.html
 
@@ -48,7 +51,8 @@ $(blog_dist)/%.html: $(blog_src)/%.tex
 	@pandoc -f latex -i $< -t html -o $@ \
 		--template ./templates/root.html \
 		--toc \
-		--include-after-body=./templates/fortune-cookie-component.html \
+		--section-divs \
+		--include-in-header=./templates/fortune-cookie-component.html \
 		--include-after-body=./templates/thank-you-note.html \
 		--include-after-body=./templates/footer.html
 
@@ -59,14 +63,14 @@ blog_index: $(blog) remove_index
 	@$(foreach series, $(wildcard $(blog_dist)/*), \
 		ls $(series) \
 			| grep -v index.html \
-			| ./scripts/filename2index.sh \
+			| ./scripts/filename2index.py \
 			| pandoc -t html -o $(series)/index.html \
-				--metadata title:"$(shell echo '$(series)' | ./scripts/directory2title.sh)" \
+				--metadata title:"$(shell echo '$(series)' | ./scripts/directory2title.py)" \
 				--template ./templates/root.html \
 				--include-after-body=./templates/footer.html;)
 	@ls $(blog_dist) \
 	  	| grep -v index.html \
-	  	| ./scripts/directory2index.sh \
+	  	| ./scripts/directory2index.py \
 	  	| pandoc -t html -o $(blog_dist)/index.html \
 				--metadata title:"$(GH_USER)/blog" \
 	  		--template ./templates/root.html \
@@ -77,17 +81,17 @@ blog_index: $(blog) remove_index
 profile: $(wildcard ./README.org) $(wildcard ./README.md)
 	@[[ -f ./README.org ]] && bash -c 'cat ./README.org \
 		| tee >(pandoc -f org -t gfm -o $(profile_dist)/README.md) \
-		| pandoc -f org -t html -o ./index.html --template ./templates/root.html' \
-			--include-after-body=./templates/fortune-cookie-component.html \
+		| pandoc -f org -t html -o ./index.html --template ./templates/root.html \
+			--include-in-header=./templates/fortune-cookie-component.html \
 			--include-after-body=./templates/thank-you-note.html \
-			--include-after-body=./templates/footer.html \
+			--include-after-body=./templates/footer.html' \
 			|| true
 	@[[ -f ./README.md ]] && bash -c 'cat ./README.md \
 		| tee >(pandoc -t gfm -o $(profile_dist)/README.md) \
-		| pandoc -t html -o ./index.html --template ./templates/root.html' \
-			--include-after-body=./templates/fortune-cookie-component.html \
+		| pandoc -t html -o ./index.html --template ./templates/root.html \
+			--include-in-header=./templates/fortune-cookie-component.html \
 			--include-after-body=./templates/thank-you-note.html \
-			--include-after-body=./templates/footer.html \
+			--include-after-body=./templates/footer.html' \
 			|| true
 
 ########### DEPLOY #############

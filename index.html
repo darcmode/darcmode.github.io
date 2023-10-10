@@ -1,259 +1,507 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
-<head>
-  <meta charset="utf-8" />
-  <meta name="generator" content="pandoc" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>arcmode</title>
-  <style>
-    html {
-      color: #1a1a1a;
-      background-color: #fdfdfd;
-    }
-    body {
-      margin: 0 auto;
-      max-width: 36em;
-      padding-left: 50px;
-      padding-right: 50px;
-      padding-top: 50px;
-      padding-bottom: 50px;
-      hyphens: auto;
-      overflow-wrap: break-word;
-      text-rendering: optimizeLegibility;
-      font-kerning: normal;
-    }
-    @media (max-width: 600px) {
-      body {
-        font-size: 0.9em;
-        padding: 12px;
-      }
-      h1 {
-        font-size: 1.8em;
-      }
-    }
-    @media print {
-      html {
-        background-color: white;
-      }
-      body {
-        background-color: transparent;
-        color: black;
-        font-size: 12pt;
-      }
-      p, h2, h3 {
-        orphans: 3;
-        widows: 3;
-      }
-      h2, h3, h4 {
-        page-break-after: avoid;
-      }
-    }
-    p {
-      margin: 1em 0;
-    }
-    a {
-      color: #1a1a1a;
-    }
-    a:visited {
-      color: #1a1a1a;
-    }
-    img {
-      max-width: 100%;
-    }
-    svg {
-      height; auto;
-      max-width: 100%;
-    }
-    h1, h2, h3, h4, h5, h6 {
-      margin-top: 1.4em;
-    }
-    h5, h6 {
-      font-size: 1em;
-      font-style: italic;
-    }
-    h6 {
-      font-weight: normal;
-    }
-    ol, ul {
-      padding-left: 1.7em;
-      margin-top: 1em;
-    }
-    li > ol, li > ul {
-      margin-top: 0;
-    }
-    blockquote {
-      margin: 1em 0 1em 1.7em;
-      padding-left: 1em;
-      border-left: 2px solid #e6e6e6;
-      color: #606060;
-    }
-    code {
-      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
-      font-size: 85%;
-      margin: 0;
-      hyphens: manual;
-    }
-    pre {
-      margin: 1em 0;
-      overflow: auto;
-    }
-    pre code {
-      padding: 0;
-      overflow: visible;
-      overflow-wrap: normal;
-    }
-    .sourceCode {
-     background-color: transparent;
-     overflow: visible;
-    }
-    hr {
-      background-color: #1a1a1a;
-      border: none;
-      height: 1px;
-      margin: 1em 0;
-    }
-    table {
-      margin: 1em 0;
-      border-collapse: collapse;
-      width: 100%;
-      overflow-x: auto;
-      display: block;
-      font-variant-numeric: lining-nums tabular-nums;
-    }
-    table caption {
-      margin-bottom: 0.75em;
-    }
-    tbody {
-      margin-top: 0.5em;
-      border-top: 1px solid #1a1a1a;
-      border-bottom: 1px solid #1a1a1a;
-    }
-    th {
-      border-top: 1px solid #1a1a1a;
-      padding: 0.25em 0.5em 0.25em 0.5em;
-    }
-    td {
-      padding: 0.125em 0.5em 0.25em 0.5em;
-    }
-    header {
-      margin-bottom: 4em;
-      text-align: center;
-    }
-    #TOC li {
-      list-style: none;
-    }
-    #TOC ul {
-      padding-left: 1.3em;
-    }
-    #TOC > ul {
-      padding-left: 0;
-    }
-    #TOC a:not(:hover) {
-      text-decoration: none;
-    }
-    code{white-space: pre-wrap;}
-    span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    /* The extra [class] is a hack that increases specificity enough to
-       override a similar rule in reveal.js */
-    ul.task-list[class]{list-style: none;}
-    ul.task-list li input[type="checkbox"] {
-      font-size: inherit;
-      width: 0.8em;
-      margin: 0 0.8em 0.2em -1.6em;
-      vertical-align: middle;
-    }
-    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
-  </style>
-  <!--[if lt IE 9]>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
-  <![endif]-->
-  <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
-  <style>
-   html {
-       background: radial-gradient(peru, wheat);
-   }
-   body {
-       font-family: 'Roboto';
-   }
-   nav, footer {
-       border-radius: 10px;
-       padding: 1REM;
-       background: wheat;
-   }
-   footer {
-       display: flex;
-       align-items: center;
-       justify-content: space-evenly;
-   }
-   div.sourceCode {
-       padding: 1REM;
-       border-radius: 1REM;
-       background: wheat;
-   }
+    <head>
+        <meta charset="utf-8" />
+        <meta name="generator" content="pandoc" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+                                        <title>arcmode</title>
+        <style>
+         html {
+           color: #1a1a1a;
+           background-color: #fdfdfd;
+         }
+         body {
+           margin: 0 auto;
+           max-width: 36em;
+           padding-left: 50px;
+           padding-right: 50px;
+           padding-top: 50px;
+           padding-bottom: 50px;
+           hyphens: auto;
+           overflow-wrap: break-word;
+           text-rendering: optimizeLegibility;
+           font-kerning: normal;
+         }
+         @media (max-width: 600px) {
+           body {
+             font-size: 0.9em;
+             padding: 12px;
+           }
+           h1 {
+             font-size: 1.8em;
+           }
+         }
+         @media print {
+           html {
+             background-color: white;
+           }
+           body {
+             background-color: transparent;
+             color: black;
+             font-size: 12pt;
+           }
+           p, h2, h3 {
+             orphans: 3;
+             widows: 3;
+           }
+           h2, h3, h4 {
+             page-break-after: avoid;
+           }
+         }
+         p {
+           margin: 1em 0;
+         }
+         a {
+           color: #1a1a1a;
+         }
+         a:visited {
+           color: #1a1a1a;
+         }
+         img {
+           max-width: 100%;
+         }
+         svg {
+           height; auto;
+           max-width: 100%;
+         }
+         h1, h2, h3, h4, h5, h6 {
+           margin-top: 1.4em;
+         }
+         h5, h6 {
+           font-size: 1em;
+           font-style: italic;
+         }
+         h6 {
+           font-weight: normal;
+         }
+         ol, ul {
+           padding-left: 1.7em;
+           margin-top: 1em;
+         }
+         li > ol, li > ul {
+           margin-top: 0;
+         }
+         blockquote {
+           margin: 1em 0 1em 1.7em;
+           padding-left: 1em;
+           border-left: 2px solid #e6e6e6;
+           color: #606060;
+         }
+         code {
+           font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+           font-size: 85%;
+           margin: 0;
+           hyphens: manual;
+         }
+         pre {
+           margin: 1em 0;
+           overflow: auto;
+         }
+         pre code {
+           padding: 0;
+           overflow: visible;
+           overflow-wrap: normal;
+         }
+         .sourceCode {
+          background-color: transparent;
+          overflow: visible;
+         }
+         hr {
+           background-color: #1a1a1a;
+           border: none;
+           height: 1px;
+           margin: 1em 0;
+         }
+         table {
+           margin: 1em 0;
+           border-collapse: collapse;
+           width: 100%;
+           overflow-x: auto;
+           display: block;
+           font-variant-numeric: lining-nums tabular-nums;
+         }
+         table caption {
+           margin-bottom: 0.75em;
+         }
+         tbody {
+           margin-top: 0.5em;
+           border-top: 1px solid #1a1a1a;
+           border-bottom: 1px solid #1a1a1a;
+         }
+         th {
+           border-top: 1px solid #1a1a1a;
+           padding: 0.25em 0.5em 0.25em 0.5em;
+         }
+         td {
+           padding: 0.125em 0.5em 0.25em 0.5em;
+         }
+         header {
+           margin-bottom: 4em;
+           text-align: center;
+         }
+         #TOC li {
+           list-style: none;
+         }
+         #TOC ul {
+           padding-left: 1.3em;
+         }
+         #TOC > ul {
+           padding-left: 0;
+         }
+         #TOC a:not(:hover) {
+           text-decoration: none;
+         }
+         code{white-space: pre-wrap;}
+         span.smallcaps{font-variant: small-caps;}
+         div.columns{display: flex; gap: min(4vw, 1.5em);}
+         div.column{flex: auto; overflow-x: auto;}
+         div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+         /* The extra [class] is a hack that increases specificity enough to
+            override a similar rule in reveal.js */
+         ul.task-list[class]{list-style: none;}
+         ul.task-list li input[type="checkbox"] {
+           font-size: inherit;
+           width: 0.8em;
+           margin: 0 0.8em 0.2em -1.6em;
+           vertical-align: middle;
+         }
+         .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+        </style>
+                        <!--[if lt IE 9]>
+            <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+        <![endif]-->
+                <script type="module">
+                 const FORTUNE_URL = "https://unpkg.com/fortune-cookie/fortune-cookie.json";
+                 const fetchFortune = async () => {
+                     return (await fetch(FORTUNE_URL)).json();
+                 };
 
-   pre > code.sourceCode {
-       white-space: pre-wrap;
-   }
-  </style>
-</head>
-<body>
-<header id="title-block-header">
-<h1 class="title">arcmode</h1>
-<p class="date">2023-10-07 Thu</p>
-</header>
-<h1 id="hi-there">Hi there</h1>
-<p>My name is David, I'm a software person and this is my personal
-webpage.</p>
-<h2 id="blog">Blog</h2>
-<p>The blog index is <a
-href="https://arcmode.github.io/dist/blog/index.html">here</a>. It's
-built with <a href="https://pandoc.org/">Pandoc</a> and deployed as a <a
-href="https://pages.github.com/">Github Page</a>.</p>
-<h2 id="my-github-profile">My Github Profile</h2>
-<p>The <code class="verbatim">Readme.org</code> file of this repo is
-deployed as <a
-href="https://docs.github.com/en/github/setting-up-and-managing-your-github-profile/about-your-profile">Github
-Profile</a> and the <code class="verbatim">html</code> version of it
-which is generated with <a href="https://pandoc.org/">Pandoc</a> (same
-process as my blog) is the index of my <a
-href="https://pages.github.com/">Github Page</a>.</p>
-<h3 id="section"><span class="todo TODO">TODO</span> </h3>
-<ol>
-<li><p><span class="done DONE">DONE</span> Add Org Mode and Markdown
-support</p></li>
-<li><p><span class="todo TODO">TODO</span> Add fortune cookies</p></li>
-<li><p><span class="todo TODO">TODO</span> Make blog index include full
-hierarchy</p></li>
-<li><p><span class="todo TODO">TODO</span> Make blog index appear on
-posts with other series collapsed by default</p></li>
-<li><p><span class="todo TODO">TODO</span> Dark mode (dracula)</p></li>
-<li><p><span class="todo TODO">TODO</span> Dedicated templates/styles
-per page/post for seasonal posts</p></li>
-<li><p><span class="todo TODO">TODO</span> Add blog index to home page
-(readme)</p></li>
-<li><p><span class="todo TODO">TODO</span> move blog to
-arcmode/blog</p></li>
-<li><p><span class="todo TODO">TODO</span> specific templates (profile,
-homepage, blog root)</p></li>
-<li><p><span class="todo TODO">TODO</span> boilerplate automation
-(webcomponents)</p></li>
-<li><p><span class="todo TODO">TODO</span> use target-specific variables
-for pandoc formats</p>
-<p><a
-href="https://www.gnu.org/software/make/manual/make.html#Target_002dspecific">https://www.gnu.org/software/make/manual/make.html#Target_002dspecific</a></p></li>
-<li><p><span class="todo TODO">TODO</span> custom style for ascii
-art</p>
-<p><a
-href="https://www.patorjk.com/software/taag/#p=testall&amp;v=0&amp;f=Graffiti&amp;t=PanBloKe">https://www.patorjk.com/software/taag/#p=testall&amp;v=0&amp;f=Graffiti&amp;t=PanBloKe</a></p></li>
-<li><p><span class="todo TODO">TODO</span> add configuration file
-following XDG conventions</p>
-<p><a
-href="https://gist.github.com/roalcantara/107ba66dfa3b9d023ac9329e639bc58c">https://gist.github.com/roalcantara/107ba66dfa3b9d023ac9329e639bc58c</a></p></li>
-<li><p><span class="todo TODO">TODO</span> split <code
-class="verbatim">index.html</code> of profile repo and profile</p></li>
-</ol>
-</body>
+                 const randomItem = (items) => items[Math.floor(Math.random() * items.length)];
+
+                 const fortune = await fetchFortune();
+
+                 class FortuneCookie extends HTMLElement {
+                     constructor() {
+                         super();
+
+                         // Create a container for the emoji and message
+                         const container = document.createElement('div');
+                         container.classList.add('fortune-cookie');
+
+                         // Create the emoji element
+                         const emoji = document.createElement('span');
+                         emoji.classList.add('fortune-cookie-emoji');
+                         emoji.textContent = '🥠';
+
+                         // Create the message container
+                         const messageContainer = document.createElement('div');
+                         messageContainer.classList.add('message-container');
+
+                         // Define the message to be displayed
+                         const messageParagraph = document.createElement('p');
+                         const message = document.createElement('em');
+                         message.textContent = randomItem(fortune);
+
+                         // Append the emoji and message to the container
+                         container.appendChild(emoji);
+                         messageParagraph.appendChild(message);
+                         messageContainer.appendChild(messageParagraph);
+                         container.appendChild(messageContainer);
+
+                         // Attach a click event listener to toggle the message visibility
+                         const listener = emoji.addEventListener('click', () => {
+                             messageContainer.style.visibility = 'visible';
+                             messageContainer.style.opacity = '1';
+                             emoji.removeEventListener('click', listener);
+                             container.classList.add('open');
+                         });
+
+                         // Append the container to the component
+                         this.appendChild(container);
+                     }
+                 }
+
+                 // Define the custom element
+                 customElements.define('fortune-cookie', FortuneCookie);
+                </script>
+
+                <style>
+                 /* Style for the fortune cookie emoji */
+                 .fortune-cookie {
+                     margin: 3rem 0;
+                     font-size: 2rem;
+                     text-align: center;
+                 }
+                 .fortune-cookie-emoji {
+                     cursor: pointer;
+                     transition: text-shadow 0.5s ease-in-out;
+                     text-shadow: 0 0 1px black, 0 0 1rem white, 0 0 2rem white;
+                 }
+                 .fortune-cookie:hover > .fortune-cookie-emoji {
+                     text-shadow: 0 0 1px black, 0 0 1rem white, 0 0 2rem white, 0 0 3rem white;
+                 }
+                 .fortune-cookie.open > .fortune-cookie-emoji {
+                     text-shadow: 0 0 1px black;
+                     cursor: inherit;
+                 }
+
+                 /* Style for the message container */
+                 .fortune-cookie > .message-container {
+                     visibility: hidden;
+                     opacity: 0;
+                     transition: visibility 0s, opacity 0.5s linear, text-shadow 0.5s ease-in-out;
+                     /* margin-top: 2rem; */
+                     font-size: 1rem;
+                     transform: skewX(10deg);`
+                 }
+                 .fortune-cookie > .message-container > p > em {
+                     background-color: seashell;
+                     padding: 10px;
+                 }
+                </style>
+                <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+        <style>
+         :root {
+             /* Color palette */
+             --brown-color: brown;
+             --brown2-color: saddlebrown;
+             --brown3-color: sienna;
+             --tan-color: tan;
+             --tan2-color: burlywood;
+             --tan3-color: wheat;
+             --red-color: firebrick;
+             --red2-color: darkred;
+             --red3-color: crimson;
+             --red4-color: indianred;
+             --green-color: teal;
+
+             /* Color theme */
+             --bg-color: var(--tan2-color);
+             --box-color: var(--tan3-color);
+             --link-color: var(--brown-color);
+
+             /* Global background */
+             background-color: var(--bg-color);
+         }
+         html, body {
+             margin: 0 auto;
+             padding: 0;
+             height: 100%;
+         }
+         body {
+             font-family: 'Roboto';
+             display: flex;
+             flex-direction: column;
+         }
+         nav, footer {
+             border-radius: 10px;
+             padding: 1rem;
+             background: var(--box-color);
+         }
+         .content {
+             flex: 1;
+         }
+         footer {
+             flex-shrink: 0;
+             display: flex;
+             align-items: center;
+             justify-content: space-evenly;
+             margin-bottom: 2rem;
+         }
+         div.sourceCode {
+             padding: 1rem;
+             border-radius: 1rem;
+             background: var(--box-color);
+         }
+
+         pre > code.sourceCode {
+             white-space: pre-wrap;
+         }
+
+         /* Section styles. Required when using --section-divs in Pandoc cli */
+         section > h1 {
+             font-size: 2em;
+             margin-block-start: 0.67em;
+             margin-block-end: 0.67em;
+         }
+         section > h2 {
+             font-size: 1.5em;
+             margin-block-start: 0.83em;
+             margin-block-end: 0.83em;
+         }
+         section > h1,
+         section > h2,
+         section > h3,
+         section > h4,
+         section > h5,
+         section > h6 {
+             margin-top: 1.4em;
+         }
+         section > h1 > a,
+         section > h2 > a,
+         section > h3 > a,
+         section > h4 > a,
+         section > h5 > a,
+         section > h6 > a {
+             text-decoration: none;
+             position: relative;
+         }
+         section > h1:hover > a::after,
+         section > h2:hover > a::after,
+         section > h3:hover > a::after,
+         section > h4:hover > a::after,
+         section > h5:hover > a::after,
+         section > h6:hover > a::after {
+             content: " #";
+             color: var(--link-color);
+             position: absolute;
+             left: -1em;
+         }
+         p > a {
+             transition: color 0.25s ease-in-out;
+         }
+         p > a:hover {
+             color: var(--link-color);
+         }
+        </style>
+    </head>
+    <body>
+        <div class="content">
+                                    <header id="title-block-header">
+                <h1 class="title">arcmode</h1>
+                                                                <p class="date">2023-10-07
+Thu</p>
+                            </header>
+                                    <h1 id="hi-there">Hi there</h1>
+                                    <p>My name is David, I'm a software
+                                    person and this is my personal
+                                    webpage.</p>
+                                    <h2 id="blog">Blog</h2>
+                                    <p>The blog index is <a
+                                    href="https://arcmode.github.io/dist/blog/index.html">here</a>.
+                                    It's built with <a
+                                    href="https://pandoc.org/">Pandoc</a>
+                                    and deployed as a <a
+                                    href="https://pages.github.com/">Github
+                                    Page</a>.</p>
+                                    <h2 id="my-github-profile">My Github
+                                    Profile</h2>
+                                    <p>The <code
+                                    class="verbatim">Readme.org</code>
+                                    file of this repo is deployed as <a
+                                    href="https://docs.github.com/en/github/setting-up-and-managing-your-github-profile/about-your-profile">Github
+                                    Profile</a> and the <code
+                                    class="verbatim">html</code> version
+                                    of it which is generated with <a
+                                    href="https://pandoc.org/">Pandoc</a>
+                                    (same process as my blog) is the
+                                    index of my <a
+                                    href="https://pages.github.com/">Github
+                                    Page</a>.</p>
+                                    <h3 id="section"><span
+                                    class="todo TODO">TODO</span> </h3>
+                                    <ol>
+                                    <li><p><span
+                                    class="done DONE">DONE</span> Add
+                                    Org Mode and Markdown
+                                    support</p></li>
+                                    <li><p><span
+                                    class="done DONE">DONE</span> Add
+                                    fortune cookies</p></li>
+                                    <li><p><span
+                                    class="todo TODO">TODO</span> Try
+                                    blockquote tag for fortune cookie
+                                    message</p></li>
+                                    <li><p><span
+                                    class="todo TODO">TODO</span>
+                                    Investigate DRY for build. Makefile
+                                    reusable parts, pandoc configuration
+                                    file</p></li>
+                                    <li><p><span
+                                    class="todo TODO">TODO</span> Try
+                                    –number-sections</p></li>
+                                    <li><p><span
+                                    class="todo TODO">TODO</span>
+                                    Investigate
+                                    –indented-code-classes</p></li>
+                                    <li><p><span
+                                    class="todo TODO">TODO</span> Check
+                                    out pandocsql</p></li>
+                                    <li><p><span
+                                    class="todo TODO">TODO</span>
+                                    Libraries to write Pandoc filters in
+                                    Rust, Guile, TypeScript (Deno or
+                                    just Nodejs typings)</p></li>
+                                    <li><p><span
+                                    class="todo TODO">TODO</span> Make
+                                    blog index include full
+                                    hierarchy</p></li>
+                                    <li><p><span
+                                    class="todo TODO">TODO</span> Make
+                                    blog index appear on posts with
+                                    other series collapsed by
+                                    default</p></li>
+                                    <li><p><span
+                                    class="todo TODO">TODO</span> Dark
+                                    mode (dracula)</p></li>
+                                    <li><p><span
+                                    class="todo TODO">TODO</span>
+                                    Dedicated templates/styles per
+                                    page/post for seasonal
+                                    posts</p></li>
+                                    <li><p><span
+                                    class="todo TODO">TODO</span> Add
+                                    blog index to home page
+                                    (readme)</p></li>
+                                    <li><p><span
+                                    class="todo TODO">TODO</span> move
+                                    blog to arcmode/blog</p></li>
+                                    <li><p><span
+                                    class="todo TODO">TODO</span>
+                                    specific templates (profile,
+                                    homepage, blog root)</p></li>
+                                    <li><p><span
+                                    class="todo TODO">TODO</span>
+                                    boilerplate automation
+                                    (webcomponents)</p></li>
+                                    <li><p><span
+                                    class="todo TODO">TODO</span> use
+                                    target-specific variables for pandoc
+                                    formats</p>
+                                    <p><a
+                                    href="https://www.gnu.org/software/make/manual/make.html#Target_002dspecific">https://www.gnu.org/software/make/manual/make.html#Target_002dspecific</a></p></li>
+                                    <li><p><span
+                                    class="todo TODO">TODO</span> custom
+                                    style for ascii art</p>
+                                    <p><a
+                                    href="https://www.patorjk.com/software/taag/#p=testall&amp;v=0&amp;f=Graffiti&amp;t=PanBloKe">https://www.patorjk.com/software/taag/#p=testall&amp;v=0&amp;f=Graffiti&amp;t=PanBloKe</a></p></li>
+                                    <li><p><span
+                                    class="todo TODO">TODO</span> add
+                                    configuration file following XDG
+                                    conventions</p>
+                                    <p><a
+                                    href="https://gist.github.com/roalcantara/107ba66dfa3b9d023ac9329e639bc58c">https://gist.github.com/roalcantara/107ba66dfa3b9d023ac9329e639bc58c</a></p></li>
+                                    <li><p><span
+                                    class="todo TODO">TODO</span> split
+                                    <code
+                                    class="verbatim">index.html</code>
+                                    of profile repo and profile</p></li>
+                                    </ol>
+        </div>
+                <p>
+                    Thanks for reading, if you have any questions feel free to send me an
+                    <a href="mailto:drojascamaggi@gmail.com">email</a>. By the way, would
+                    you like a fortune cookie?
+                    <fortune-cookie></fortune-cookie>
+                </p>
+                <footer>
+                    <p>
+                        &copy; 2023 All rights reserved
+                    </p>
+                    <a href="https://arcmode.github.io/">Home</a>
+                    <a href="https://arcmode.github.io/dist/blog/">Blog</a>
+                    <a href="mailto:drojascamaggi@gmail.com">Contact</a>
+                </footer>
+                <br />
+            </body>
 </html>
