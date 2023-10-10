@@ -170,61 +170,6 @@
                         <!--[if lt IE 9]>
             <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
         <![endif]-->
-                <script type="module">
-                 const FORTUNE_URL = "https://unpkg.com/fortune-cookie/fortune-cookie.json";
-                 const fetchFortune = async () => {
-                     return (await fetch(FORTUNE_URL)).json();
-                 };
-
-                 const randomItem = (items) => items[Math.floor(Math.random() * items.length)];
-
-                 const fortune = await fetchFortune();
-
-                 class FortuneCookie extends HTMLElement {
-                     constructor() {
-                         super();
-
-                         // Create a container for the emoji and message
-                         const container = document.createElement('div');
-                         container.classList.add('fortune-cookie');
-
-                         // Create the emoji element
-                         const emoji = document.createElement('span');
-                         emoji.classList.add('fortune-cookie-emoji');
-                         emoji.textContent = '🥠';
-
-                         // Create the message container
-                         const messageContainer = document.createElement('div');
-                         messageContainer.classList.add('message-container');
-
-                         // Define the message to be displayed
-                         const messageParagraph = document.createElement('p');
-                         const message = document.createElement('em');
-                         message.textContent = randomItem(fortune);
-
-                         // Append the emoji and message to the container
-                         container.appendChild(emoji);
-                         messageParagraph.appendChild(message);
-                         messageContainer.appendChild(messageParagraph);
-                         container.appendChild(messageContainer);
-
-                         // Attach a click event listener to toggle the message visibility
-                         const listener = emoji.addEventListener('click', () => {
-                             messageContainer.style.visibility = 'visible';
-                             messageContainer.style.opacity = '1';
-                             emoji.removeEventListener('click', listener);
-                             container.classList.add('open');
-                         });
-
-                         // Append the container to the component
-                         this.appendChild(container);
-                     }
-                 }
-
-                 // Define the custom element
-                 customElements.define('fortune-cookie', FortuneCookie);
-                </script>
-
                 <style>
                  /* Style for the fortune cookie emoji */
                  .fortune-cookie {
@@ -250,15 +195,77 @@
                      visibility: hidden;
                      opacity: 0;
                      transition: visibility 0s, opacity 0.5s linear, text-shadow 0.5s ease-in-out;
-                     /* margin-top: 2rem; */
                      font-size: 1rem;
-                     transform: skewX(10deg);`
+                     transform: skewX(10deg);
+                     display: flex;
+                     flex-direction: column;
+                     align-items: center;
                  }
-                 .fortune-cookie > .message-container > p > em {
+                 .fortune-cookie > .message-container > p {
                      background-color: seashell;
-                     padding: 10px;
+                     padding: 0.6em;
+                     width: fit-content;
                  }
                 </style>
+
+                <script type="module">
+                 const FORTUNE_URL = "https://unpkg.com/fortune-cookie/fortune-cookie.json";
+                 
+                 const randomItem = (items) => items[Math.floor(Math.random() * items.length)];
+
+                 let FORTUNE_MSGS;
+                 const getFortuneMsg = async () => {
+                     if (!FORTUNE_MSGS) {
+                         FORTUNE_MSGS = await (await fetch(FORTUNE_URL)).json();
+                     }
+                     return randomItem(FORTUNE_MSGS);
+                 };
+
+                 class FortuneCookie extends HTMLElement {
+                     constructor() {
+                         super();
+
+                         // Create a container for the emoji and message
+                         const container = document.createElement('div');
+                         container.classList.add('fortune-cookie');
+
+                         // Create the emoji element
+                         const emoji = document.createElement('span');
+                         emoji.classList.add('fortune-cookie-emoji');
+                         emoji.textContent = '🥠';
+
+                         // Create the message container
+                         const messageContainer = document.createElement('div');
+                         messageContainer.classList.add('message-container');
+
+                         // Define the message to be displayed
+                         const messageParagraph = document.createElement('p');
+                         const message = document.createElement('em');
+
+                         getFortuneMsg().then(fortune => message.textContent = fortune);
+
+                         // Append the emoji and message to the container
+                         container.appendChild(emoji);
+                         messageParagraph.appendChild(message);
+                         messageContainer.appendChild(messageParagraph);
+                         container.appendChild(messageContainer);
+
+                         // Attach a click event listener to toggle the message visibility
+                         const listener = emoji.addEventListener('click', () => {
+                             messageContainer.style.visibility = 'visible';
+                             messageContainer.style.opacity = '1';
+                             emoji.removeEventListener('click', listener);
+                             container.classList.add('open');
+                         });
+
+                         // Append the container to the component
+                         this.appendChild(container);
+                     }
+                 }
+
+                 // Define the custom element
+                 customElements.define('fortune-cookie', FortuneCookie);
+                </script>
                 <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
         <style>
          :root {
@@ -311,7 +318,6 @@
          div.sourceCode {
              padding: 1rem;
              border-radius: 1rem;
-             background: var(--box-color);
          }
 
          pre > code.sourceCode {
