@@ -70,13 +70,13 @@ This structure will require three small scripts in order to generate index files
 original author to given them credit but have not been able to.
 
 The first file to cover converts directory paths to titles. This is used to create a title for the index file of each series.
-#+INCLUDE: "../../scripts/directory2title.py" src python
+#+INCLUDE: "../../scripts/directory2title.py" src python -n
 
 The second file converts a list of filenames to an index. This is used to build the actual index of each series.
-#+INCLUDE: "../../scripts/filename2index.py" src python
+#+INCLUDE: "../../scripts/filename2index.py" src python -n
 
 The third file converts directory paths to an index. This is used to build the root index for the entire blog.
-#+INCLUDE: "../../scripts/directory2index.py" src python
+#+INCLUDE: "../../scripts/directory2index.py" src python -n
 
 ** Build and deployment
 
@@ -84,10 +84,20 @@ Currently the repository contains two deployment targets managed as git remotes.
 the static files on repositories following their guidelines. You can google for GitHub pages and GitHub profiles to learn about the details.
 
 The blog and profile are generated as different folders using Pandoc, then each output
-is pushed to the respective git remote. The blog uses =origin= and the profile page uses a git sub-tree targeting it's own remote.
+is pushed to the respective git remote. The blog uses =origin= and the profile page uses a git sub-tree targeting it's own remote. I will cover this in more detail shortly.
 
-1. Blog -> github:<username>.github.io.git
-2. Profile -> github:<username>.git
+I like to split my =Makefile='s because it makes it easier to maintain in the longer term. The first file to look at
+is =variables.mk= which declares all the needed directory paths for inputs and outpus.
+#+INCLUDE: "../../build/variables.mk" src makefile -n
 
-That's it for now. Here's the Makefile if you want to take a look. You can also find it in the [[https://github.com/arcmode/arcmode.github.io][repo]]
-#+INCLUDE: "../../Makefile" src makefile
+The second file is =blog.mk= which defines the build graph for the blog posts, the blog index and the index for each series.
+#+INCLUDE: "../../build/blog.mk" src makefile -n
+
+The third file is =index.mk= which builds the landing page for the personal website. The blog will sit in a sub-directory.
+#+INCLUDE: "../../build/index.mk" src makefile -n
+
+Next, we have =deployment.mk= which manages the deploy commands and the initialization logic for settiing up the git remotes and subtrees.
+#+INCLUDE: "../../build/deployment.mk" src makefile -n
+
+Finally, we have the actual =Makefile= which ties everything together and declares the build targets we will use.
+#+INCLUDE: "../../Makefile" src makefile -n

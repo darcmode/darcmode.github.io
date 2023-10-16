@@ -15,8 +15,9 @@ of my [[https://pages.github.com/][Github Page]].
 *** TODO 
 **** DONE Add Org Mode and Markdown support
 **** DONE Add fortune cookies
-**** TODO Try blockquote tag for fortune cookie message
-**** TODO Investigate DRY for build. Makefile reusable parts, pandoc configuration file
+**** DONE Try blockquote tag for fortune cookie message
+**** DONE Investigate DRY for build. Makefile reusable parts, pandoc configuration file
+**** TODO Implement tags
 **** TODO Try --number-sections
 **** TODO Investigate --indented-code-classes
 **** TODO Check out pandocsql

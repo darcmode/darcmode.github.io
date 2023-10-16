@@ -10,6 +10,9 @@
             pkgs = import nixpkgs {
               inherit system overlays;
             };
+            lua = pkgs.lua5_3.withPackages(ps: with ps; [
+              luacheck
+            ]);
         in
         with pkgs;
         {
@@ -20,6 +23,9 @@
               # python
               python312
               pyright
+              # lua
+              lua
+              lua-language-server
             ];
 
             shellHook = ''
