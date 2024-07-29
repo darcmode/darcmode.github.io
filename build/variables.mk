@@ -18,11 +18,10 @@ PANDOC_HTML_THANKS_AND_COOKIE = --include-in-header=./pandoc/templates/fortune.h
 PANDOC_HTML_BLOG = $(PANDOC_DATA_DIR) --toc --section-divs \
 	--lua-filter=./pandoc/filters/permalinks.lua \
 	--lua-filter=./pandoc/filters/org-include-numberlines.lua \
+	--lua-filter=./pandoc/filters/enhance-metadata.lua \
 	$(PANDOC_HTML_THANKS_AND_COOKIE) \
 	$(PANDOC_HTML_FOOTER) \
-	--highlight=zenburn \
-	--columns 10 \
-	--listings
+	--highlight=zenburn
 
 PANDOC_HTML_PROFILE = $(PANDOC_DATA_DIR) --section-divs \
 	$(PANDOC_HTML_THANKS_AND_COOKIE) \

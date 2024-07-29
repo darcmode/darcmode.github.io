@@ -35,7 +35,7 @@ local function extract_title(inline)
   return title
 end
 
-function Reader(input)
+function Reader(input, meta)
   -- List of all docs
   local rootdoc = {}
   -- Process each input file
@@ -59,10 +59,12 @@ function Reader(input)
       table.insert(doccontent, pandoc.Para(tags))
     end
     -- Add all blocks from the original doc into the content wrapper
-    for i, block in pairs(doc.blocks) do
+    for _, block in pairs(doc.blocks) do
       table.insert(doccontent, block)
     end
     table.insert(rootdoc, pandoc.Div(doccontent, "#" .. extract_title(title)));
   end
-  return pandoc.Pandoc(rootdoc);
+  rootdoc = pandoc.Pandoc(rootdoc);
+  rootdoc.meta['title'] = meta['title'];
+  return rootdoc;
 end

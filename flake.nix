@@ -10,8 +10,9 @@
             pkgs = import nixpkgs {
               inherit system overlays;
             };
-            lua = pkgs.lua5_3.withPackages(ps: with ps; [
+            lua = pkgs.lua5_4.withPackages(ps: with ps; [
               luacheck
+              luarocks
             ]);
         in
         with pkgs;
@@ -26,6 +27,8 @@
               # lua
               lua
               lua-language-server
+              # openssl is required for lua-openapi
+              openssl
             ];
 
             shellHook = ''

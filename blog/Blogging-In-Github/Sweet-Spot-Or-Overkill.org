@@ -1,6 +1,8 @@
 #+TITLE: Blogging in GitHub: Sweet spot or overkill?
 #+DATE: 2023-10-09
 #+AUTHOR: arcmode
+#+KEYWORDS: pandoc, blogging-systems, github, org-mode, gnu-make
+#+DESCRIPTION: A custom blogging system leveraging Pandoc, GitHub Pages, GNU Make and Org Mode
 
 * Hello world
 Hey there, this is the first post on my personal blog. The blog and each post is going to be generated with [[http://pandoc.org/][Pandoc]] from Markdown, Org and LaTeX files and it will be published as a GitHub page. The rest of this document describes the motivation, ideas and learnings around this process. In the following sections I explain the motivation behind each tool I am planning to use.
@@ -34,10 +36,10 @@ In summary, the tools I am using at the moment for each concern are the followin
    2. Org mode
    3. LaTeX
 2. Build system
-   1. Make
+   1. GNU Make
    2. Pandoc
 3. Deployment system
-   1. Make
+   1. GNU Make
    2. GitHub Pages
 
 ** Why Org mode

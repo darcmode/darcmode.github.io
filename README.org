@@ -17,7 +17,10 @@ of my [[https://pages.github.com/][Github Page]].
 **** DONE Add fortune cookies
 **** DONE Try blockquote tag for fortune cookie message
 **** DONE Investigate DRY for build. Makefile reusable parts, pandoc configuration file
-**** TODO Implement tags
+**** DONE Implement keywords (SEO)
+**** TODO ChatGPT Filter
+**** TODO Implement description (SEO)
+**** TODO Enhance SET attributes using ChatGPT filter
 **** TODO Try --number-sections
 **** TODO Investigate --indented-code-classes
 **** TODO Check out pandocsql
